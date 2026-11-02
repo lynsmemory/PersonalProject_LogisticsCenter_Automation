@@ -60,6 +60,7 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms:
     - Standalone
+    - WebGL
   - serializedVersion: 5
     name: PC
     pixelLightCount: 2
@@ -76,7 +77,7 @@ QualitySettings:
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
     anisotropicTextures: 2
-    antiAliasing: 0
+    antiAliasing: 2
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -87,7 +88,7 @@ QualitySettings:
     realtimeGICPUUsage: 100
     adaptiveVsyncExtraA: 0
     adaptiveVsyncExtraB: 0
-    lodBias: 2
+    lodBias: 20
     meshLodThreshold: 1
     maximumLODLevel: 0
     enableLODCrossFade: 1
@@ -102,7 +103,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: 6dc792eae4e53214eb1a6fa858fb0ef3, type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1
@@ -118,11 +119,9 @@ QualitySettings:
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 0
-    AndroidXR: 0
     GameCoreScarlett: 1
     GameCoreXboxOne: 1
     Lumin: 0
-    MetaQuest: 0
     Nintendo Switch: 1
     Nintendo Switch 2: 1
     PS4: 1
@@ -130,7 +129,7 @@ QualitySettings:
     Server: 0
     Stadia: 0
     Standalone: 1
-    WebGL: 0
+    WebGL: 1
     Windows Store Apps: 0
     XboxOne: 0
     iPhone: 0

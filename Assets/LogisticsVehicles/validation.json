@@ -1,0 +1,20 @@
+{
+  "prefabs": [
+    {
+      "name": "WingBody5t_Coupang",
+      "nodes": 75,
+      "components": 281,
+      "local_references_valid": true
+    },
+    {
+      "name": "RobotForklift",
+      "nodes": 35,
+      "components": 146,
+      "local_references_valid": true
+    }
+  ],
+  "pallet_slots": 10,
+  "pallet_slot_bounds_valid": true,
+  "unity_import_verified": false,
+  "branding": "Typography approximation from user reference; not official vector artwork"
+}
