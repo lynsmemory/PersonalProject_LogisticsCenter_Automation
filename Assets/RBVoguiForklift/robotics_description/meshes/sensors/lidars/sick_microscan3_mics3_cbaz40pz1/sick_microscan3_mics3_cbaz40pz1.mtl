@@ -1,0 +1,22 @@
+# Blender 5.2.2 LTS MTL File: 'sick_microscan3_pro_mics3_cbaz40pz1_from_freecad_python_macro.blend'
+# www.blender.org
+
+newmtl black_sick_ral_9005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.004392 0.004392 0.005182
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl yellow_sick_ral_1021
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.964649 0.791312 0.001214
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2

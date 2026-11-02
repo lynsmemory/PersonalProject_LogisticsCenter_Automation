@@ -1,0 +1,774 @@
+<?xml version="1.0" ?>
+
+<!--
+  This file publishes the `forklift` model of the `robot_rbvogui_forklift` package.
+  The robot name inside the URDF stays `rbvogui_forklift`.
+
+  This model extends the common RB-VOGUI platform with the forklift module.
+  The forklift module contains:
+  - A simple fork.
+  - A realsense d435 camera (rgbd) mounted on the fork.
+  - A Livox Mid-360 lidar mounted on the back of the basket.
+  - A Livox Mid-360 lidar mounted on the front of the basket.
+  - A front bottom lidar mounted on the robot body.
+-->
+<robot name="rbvogui_forklift" xmlns:gz="http://gazebosim.org/schema">
+	<!-- ===================================================================== -->
+	<!-- INCLUDES -->
+	<!-- ===================================================================== -->
+	<!--
+  Shared RB-VOGUI mobile-base Xacro for four steerable wheels.
+  This file is not a complete robot model. Entry-point Xacros such as
+  robot_rbvogui_base.xacro and robot_rbvogui_forklift.xacro include it, then add their own links,
+  sensors, actuators, and Gazebo plugins.
+
+  The base is composed of the RB-VOGUI chassis, battery and four steerable wheels:
+  - Front-left wheel uses angle +alpha.
+    (x_0 = d*cos(+alpha), y_0 = d*sin(+alpha))
+  - Front-right wheel uses angle -alpha.
+    (x_0, -y_0)
+  - Rear-left wheel uses angle 180 - alpha.
+    (-x_0, y_0)
+  - Rear-right wheel uses angle -180 + alpha.
+    (-x_0, -y_0)
+  Reference: package://ground_vehicle_kinematics/doc/kinematics_en.pdf
+
+  - The chassis uses the RB-VOGUI DAE mesh for visual and the matching STL mesh for collision.
+  - Dynamics are intentionally simplified.
+
+  Battery:
+  The battery uses the RB-VOGUI battery STL mesh for visual and collision.
+  It is always present in this model and keeps the center of mass low.
+  The base, chassis and battery links follow the RB-VOGUI frame layout.
+  -->
+	<!-- ===================================================================== -->
+	<!-- INCLUDES -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!--
+  `prop_prefix` is used as the prefix for all the properties defined in this macro.
+
+  This macro intentionally does not define fdir1 or fdir1_frame. Those values depend on the
+  robot frame tree and must be passed directly when the wheel macro is instantiated.
+  -->
+	<!-- ===================================================================== -->
+	<!-- DEFINITION OF PROPERTIES -->
+	<!-- ===================================================================== -->
+	<!-- Create properties from args for easy manipulation. -->
+	<!--
+  For prismatic joints, setting the rest position exactly at a limit can cause lock-up because of
+  numerical precision during initialization. The simulator may spawn the joint slightly outside the
+  valid range.
+  Example: if the lower limit is 0 and the rest position is set to 0, the initialized value might
+  be a tiny negative number (for example, -1.9e-12). Even this small violation can block motion.
+  Effort controllers are not affected.
+  To avoid this issue when the rest position is at the lower bound, set 'lower_limit' slightly below
+  the intended physical bound. The same applies to the upper bound: if the rest position is at the
+  upper limit, set 'upper_limit' slightly above the intended value.
+  The required margin is very small, so the practical effect on behavior is negligible.
+  If the rest position is not at either limit (for example, near the middle of the range), no extra
+  margin is usually needed.
+  -->
+	<!--
+  Important:
+  The `gz::sim::systems::VelocityControl` plugin applies chassis motion directly. The wheel-joint
+  controllers animate the wheels but wheel-ground forces do not drive the chassis. Consequently,
+  the contact parameters (`mu`, `mu2`, `slip1` and `slip2`) are not used to reproduce drivetrain
+  dynamics; they are configured with low values to minimize unwanted resistance.
+  The velocity and effort limits for the steering and rotation joints are intentionally high so
+  that they approximate ideal joints.
+  This prevents the joint limits from interfering when the robot is controlled in velocity mode.
+  Read the macro 'steerable_wheel_macro.xacro' for more details about these limit parameters.
+  -->
+	<!-- ===================================================================== -->
+	<!-- Definition of links and joints for the RB-VOGUI base -->
+	<!-- ===================================================================== -->
+	<!--
+  The link '${base_name}_footprint_link' is located on the ground below '${base_name}_link'.
+  The '${base_name}_link' frame is placed at the wheel-center height, as in RB-VOGUI.
+  -->
+	<link name="compact_forklift_base_footprint_link"/>
+	<link name="compact_forklift_base_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_base_footprint_joint" type="fixed">
+		<parent link="compact_forklift_base_footprint_link"/>
+		<child link="compact_forklift_base_link"/>
+		<!--
+    The origin of '${base_name}_footprint_link' is the ground projection of the robot base.
+    The origin of '${base_name}_link' is at the wheel-center height.
+    The fixed joint has zero rotation, so both frames use the same X, Y and Z axis directions.
+    -->
+		<origin rpy="0 0 0" xyz="0 0 0.1165"/>
+	</joint>
+	<link name="compact_forklift_chassis_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robot_rbvogui_base/meshes/rbvogui_chassis.dae" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="package://robot_rbvogui_base/meshes/rbvogui_chassis.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="25.0"/>
+			<inertia ixx="0.9952604166666666" ixy="0.0" ixz="0.0" iyy="2.385752083333333" iyz="0.0" izz="3.150908333333333"/>
+			<origin rpy="0 0 0" xyz="0 0 0.10"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_chassis_joint" type="fixed">
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_chassis_link"/>
+		<origin rpy="0 0 0" xyz="-0.012 0 0.1775"/>
+	</joint>
+	<!--
+  The battery link follows RB-VOGUI and is mounted from 'chassis_link', not directly from
+  'base_link'. The battery STL extends below its own link origin.
+  -->
+	<link name="compact_forklift_battery_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robot_rbvogui_base/meshes/rbvogui_battery.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<material name="compact_forklift_battery_color">
+				<color rgba="0.08235 0.08235 0.08235 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="package://robot_rbvogui_base/meshes/rbvogui_battery.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="45"/>
+			<inertia ixx="0.7028437499999999" ixy="0.0" ixz="0.0" iyy="0.9163115376337501" iyz="0.0" izz="1.53646778763375"/>
+			<origin rpy="0 0 0" xyz="0 0 -0.05"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_battery_joint" type="fixed">
+		<parent link="compact_forklift_chassis_link"/>
+		<child link="compact_forklift_battery_link"/>
+		<origin rpy="0 0 0" xyz="0.02952 0 0"/>
+	</joint>
+	<!--
+  Definition of the steerable wheels.
+  -->
+	<!--
+  The steerable_wheel macro creates:
+  - Links:
+    * ${prefix}${name}_steerable_link
+    * ${prefix}${name}_rotation_link
+  - Joints:
+    * ${prefix}${name}_steering_joint (revolute|fixed):
+      parent=${parent_frame}, child=${prefix}${name}_steerable_link
+    * ${prefix}${name}_rotation_joint (continuous|fixed):
+      parent=${prefix}${name}_steerable_link, child=${prefix}${name}_rotation_link
+  -->
+	<!-- A steerable wheel is a cylinder whose rotation axis can change its orientation. -->
+	<link name="compact_forklift_front_left_wheel_steerable_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_left_wheel_steering_joint" type="revolute">
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_front_left_wheel_steerable_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.36799987310964494 0.23500019870477815 0.0"/>
+		<axis xyz="0 0 1"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="100.0"/>
+	</joint>
+	<link name="compact_forklift_front_left_wheel_rotation_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/wheels/standard_wheels/rubber_wheel_2.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<material name="compact_forklift_front_left_wheel_color">
+				<color rgba="0.1 0.1 0.1 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.142462" radius="0.117494"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="7.5"/>
+			<inertia ixx="0.03856871347" ixy="0.0" ixz="0.0" iyy="0.051768150135" iyz="0.0" izz="0.03856871347"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_left_wheel_rotation_joint" type="continuous">
+		<parent link="compact_forklift_front_left_wheel_steerable_link"/>
+		<child link="compact_forklift_front_left_wheel_rotation_link"/>
+		<!--
+      rotation_link is translated only along the Z axis of steerable_link. Their X and Y coordinates
+      and their initial orientations remain coincident.
+      This joint adds only wheel spin around +Y of steerable_link.
+      -->
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		<axis xyz="0 1 0"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" velocity="100.0"/>
+	</joint>
+	<!-- A steerable wheel is a cylinder whose rotation axis can change its orientation. -->
+	<link name="compact_forklift_front_right_wheel_steerable_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_right_wheel_steering_joint" type="revolute">
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_front_right_wheel_steerable_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.36799987310964494 -0.23500019870477815 0.0"/>
+		<axis xyz="0 0 1"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="100.0"/>
+	</joint>
+	<link name="compact_forklift_front_right_wheel_rotation_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/wheels/standard_wheels/rubber_wheel_2.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<material name="compact_forklift_front_right_wheel_color">
+				<color rgba="0.1 0.1 0.1 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.142462" radius="0.117494"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="7.5"/>
+			<inertia ixx="0.03856871347" ixy="0.0" ixz="0.0" iyy="0.051768150135" iyz="0.0" izz="0.03856871347"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_right_wheel_rotation_joint" type="continuous">
+		<parent link="compact_forklift_front_right_wheel_steerable_link"/>
+		<child link="compact_forklift_front_right_wheel_rotation_link"/>
+		<!--
+      rotation_link is translated only along the Z axis of steerable_link. Their X and Y coordinates
+      and their initial orientations remain coincident.
+      This joint adds only wheel spin around +Y of steerable_link.
+      -->
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		<axis xyz="0 1 0"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" velocity="100.0"/>
+	</joint>
+	<!-- A steerable wheel is a cylinder whose rotation axis can change its orientation. -->
+	<link name="compact_forklift_rear_left_wheel_steerable_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_rear_left_wheel_steering_joint" type="revolute">
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_rear_left_wheel_steerable_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="-0.36799987310964494 0.23500019870477815 0.0"/>
+		<axis xyz="0 0 1"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="100.0"/>
+	</joint>
+	<link name="compact_forklift_rear_left_wheel_rotation_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/wheels/standard_wheels/rubber_wheel_2.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<material name="compact_forklift_rear_left_wheel_color">
+				<color rgba="0.1 0.1 0.1 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.142462" radius="0.117494"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="7.5"/>
+			<inertia ixx="0.03856871347" ixy="0.0" ixz="0.0" iyy="0.051768150135" iyz="0.0" izz="0.03856871347"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_rear_left_wheel_rotation_joint" type="continuous">
+		<parent link="compact_forklift_rear_left_wheel_steerable_link"/>
+		<child link="compact_forklift_rear_left_wheel_rotation_link"/>
+		<!--
+      rotation_link is translated only along the Z axis of steerable_link. Their X and Y coordinates
+      and their initial orientations remain coincident.
+      This joint adds only wheel spin around +Y of steerable_link.
+      -->
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		<axis xyz="0 1 0"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" velocity="100.0"/>
+	</joint>
+	<!-- A steerable wheel is a cylinder whose rotation axis can change its orientation. -->
+	<link name="compact_forklift_rear_right_wheel_steerable_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_rear_right_wheel_steering_joint" type="revolute">
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_rear_right_wheel_steerable_link"/>
+		<origin rpy="0.0 0.0 0.0" xyz="-0.36799987310964494 -0.23500019870477815 0.0"/>
+		<axis xyz="0 0 1"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="100.0"/>
+	</joint>
+	<link name="compact_forklift_rear_right_wheel_rotation_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/wheels/standard_wheels/rubber_wheel_2.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<material name="compact_forklift_rear_right_wheel_color">
+				<color rgba="0.1 0.1 0.1 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.142462" radius="0.117494"/>
+			</geometry>
+			<origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="7.5"/>
+			<inertia ixx="0.03856871347" ixy="0.0" ixz="0.0" iyy="0.051768150135" iyz="0.0" izz="0.03856871347"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_rear_right_wheel_rotation_joint" type="continuous">
+		<parent link="compact_forklift_rear_right_wheel_steerable_link"/>
+		<child link="compact_forklift_rear_right_wheel_rotation_link"/>
+		<!--
+      rotation_link is translated only along the Z axis of steerable_link. Their X and Y coordinates
+      and their initial orientations remain coincident.
+      This joint adds only wheel spin around +Y of steerable_link.
+      -->
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		<axis xyz="0 1 0"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="100000.0" velocity="100.0"/>
+	</joint>
+	<!-- ===================================================================== -->
+	<!-- PLUGINS FOR THE BASE -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!--
+  `prop_prefix` is used as the prefix for all the properties defined in this macro.
+  -->
+	<!--
+  `prop_prefix` is used as the prefix for all the properties defined in this macro.
+  -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+	<!--
+  Inertia of a solid box with uniform mass distribution (m) and size 'sx sy sz'.
+  The inertia tensor below is expressed in the principal axes at the CoM.
+  'xyz' and 'rpy' give the CoM pose w.r.t. the link frame.
+  -->
+	<!-- ===================================================================== -->
+	<!-- MACROS BELOW ARE FOR INTERNAL USE ONLY -->
+	<!-- ===================================================================== -->
+	<!-- ===================================================================== -->
+	<!-- XACRO:ARGS ARE CONVERTED TO XACRO:PROPERTIES FOR EASY MANIPULATION -->
+	<!-- ===================================================================== -->
+	<!-- ===================================================================== -->
+	<!-- BASKET -->
+	<!-- ===================================================================== -->
+	<joint name="compact_forklift_basket_chassis_closed_livox_supports_joint" type="fixed">
+		<origin rpy="0 0 0" xyz="0.027732 0 0.2445"/>
+		<parent link="compact_forklift_chassis_link"/>
+		<child link="compact_forklift_basket_root_link"/>
+	</joint>
+	<link name="compact_forklift_basket_root_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robot_rbvogui_base/meshes/basket/basket_sensors.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="package://robot_rbvogui_base/meshes/basket/basket_sensors.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<!-- ===================================================================== -->
+	<!-- FORK MOCKUP -->
+	<!-- ===================================================================== -->
+	<joint name="compact_forklift_fork_root_joint" type="prismatic">
+		<origin rpy="0 0 0" xyz="0.618842 0 -0.09050000000000001"/>
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_fork_root_link"/>
+		<axis xyz="0 0 1"/>
+		<dynamics damping="10.0" friction="1.0"/>
+		<limit effort="20000.0" lower="-0.005" upper="0.2" velocity="0.04"/>
+	</joint>
+	<link name="compact_forklift_fork_root_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/extras/forks/fork_mockup/fork_mockup.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/extras/forks/fork_mockup/fork_mockup.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</collision>
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<!-- ===================================================================== -->
+	<!-- FRONT TOP LIVOX MID-360 -->
+	<!-- ===================================================================== -->
+	<link name="compact_forklift_front_top_lidar_root_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/sensors/lidars/livox_mid360/livox_mid360.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.065 0.065 0.06"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03"/>
+		</collision>
+		<inertial>
+			<mass value="0.265"/>
+			<inertia ixx="0.00017280208333333335" ixy="0.0" ixz="0.0" iyy="0.00017280208333333335" iyz="0.0" izz="0.00018660416666666668"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_top_lidar_root_joint" type="fixed">
+		<parent link="compact_forklift_basket_root_link"/>
+		<child link="compact_forklift_front_top_lidar_root_link"/>
+		<origin rpy="0.0 0.5235987755982988 0.0" xyz="0.4882 0.0 0.1952"/>
+	</joint>
+	<!-- Definition of the data link '${prefix}${name}_link'. -->
+	<link name="compact_forklift_front_top_lidar_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<!-- This fixed joint places the lidar data link 47 mm above the root link. -->
+	<joint name="compact_forklift_front_top_lidar_joint" type="fixed">
+		<parent link="compact_forklift_front_top_lidar_root_link"/>
+		<child link="compact_forklift_front_top_lidar_link"/>
+		<origin rpy="0 0 0" xyz="0 0 0.047"/>
+	</joint>
+	<!-- The integrated IMU frame is offset from the lidar data frame in the product geometry. -->
+	<link name="compact_forklift_front_top_lidar_imu_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_top_lidar_imu_joint" type="fixed">
+		<parent link="compact_forklift_front_top_lidar_link"/>
+		<child link="compact_forklift_front_top_lidar_imu_link"/>
+		<origin rpy="0 0 0" xyz="0.011 0.02329 -0.04412"/>
+	</joint>
+	<!-- ===================================================================== -->
+	<!-- FRONT BOTTOM SICK MICROSCAN3 -->
+	<!-- ===================================================================== -->
+	<link name="compact_forklift_front_bottom_lidar_root_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/sensors/lidars/sick_microscan3_mics3_cbaz40pz1/sick_microscan3_mics3_cbaz40pz1.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.07535"/>
+		</visual>
+		<collision>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/sensors/lidars/sick_microscan3_mics3_cbaz40pz1/sick_microscan3_mics3_cbaz40pz1.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.07535"/>
+		</collision>
+		<inertial>
+			<mass value="1.45"/>
+			<inertia ixx="0.004235655416666666" ixy="0.0" ixz="0.0" iyy="0.004235655416666666" iyz="0.0" izz="0.0029829424166666666"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.07535"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_front_bottom_lidar_root_joint" type="fixed">
+		<parent link="compact_forklift_base_link"/>
+		<child link="compact_forklift_front_bottom_lidar_root_link"/>
+		<origin rpy="3.141592653589793 0.0 0.0" xyz="0.46645000000000003 0.0 0.13419999999999999"/>
+	</joint>
+	<!-- Definition of the data link '${prefix}${name}_link'. -->
+	<link name="compact_forklift_front_bottom_lidar_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<!--
+    Definition of the joint '${prefix}${name}_joint', that joins the lidar data link to its root
+    link.
+    This pose sets the position and orientation of the sensor frame with respect to the root frame,
+    located at the center of the bottom face of the box.
+    -->
+	<joint name="compact_forklift_front_bottom_lidar_joint" type="fixed">
+		<parent link="compact_forklift_front_bottom_lidar_root_link"/>
+		<child link="compact_forklift_front_bottom_lidar_link"/>
+		<origin rpy="0 0 0" xyz="0 0 0.1106"/>
+	</joint>
+	<!-- ===================================================================== -->
+	<!-- BACK TOP LIVOX MID-360 -->
+	<!-- ===================================================================== -->
+	<link name="compact_forklift_back_top_lidar_root_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://robotics_description/meshes/sensors/lidars/livox_mid360/livox_mid360.stl" scale="1.0 1.0 1.0"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.065 0.065 0.06"/>
+			</geometry>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03"/>
+		</collision>
+		<inertial>
+			<mass value="0.265"/>
+			<inertia ixx="0.00017280208333333335" ixy="0.0" ixz="0.0" iyy="0.00017280208333333335" iyz="0.0" izz="0.00018660416666666668"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_back_top_lidar_root_joint" type="fixed">
+		<parent link="compact_forklift_basket_root_link"/>
+		<child link="compact_forklift_back_top_lidar_root_link"/>
+		<origin rpy="0.0 0.5235987755982988 3.141592653589793" xyz="-0.4844 0.0 0.1217"/>
+	</joint>
+	<!-- Definition of the data link '${prefix}${name}_link'. -->
+	<link name="compact_forklift_back_top_lidar_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<!-- This fixed joint places the lidar data link 47 mm above the root link. -->
+	<joint name="compact_forklift_back_top_lidar_joint" type="fixed">
+		<parent link="compact_forklift_back_top_lidar_root_link"/>
+		<child link="compact_forklift_back_top_lidar_link"/>
+		<origin rpy="0 0 0" xyz="0 0 0.047"/>
+	</joint>
+	<!-- The integrated IMU frame is offset from the lidar data frame in the product geometry. -->
+	<link name="compact_forklift_back_top_lidar_imu_link">
+		<inertial>
+			<mass value="0.01"/>
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</inertial>
+	</link>
+	<joint name="compact_forklift_back_top_lidar_imu_joint" type="fixed">
+		<parent link="compact_forklift_back_top_lidar_link"/>
+		<child link="compact_forklift_back_top_lidar_imu_link"/>
+		<origin rpy="0 0 0" xyz="0.011 0.02329 -0.04412"/>
+	</joint>
+</robot>

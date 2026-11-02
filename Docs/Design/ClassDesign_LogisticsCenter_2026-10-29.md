@@ -91,7 +91,7 @@ Input/       BoxSpawner, BarcodeLabelPrinter
 Conveyor/    MainConveyorController
 Sorting/     BarcodeScanner, LaneDiverter(기존)
 Lane/        LaneOccupancyMonitor, MiddleStopper, PickupZoneAligner, BrakeRollerZone(기존)
-Robot/       RobotArmInverseKinematics, VacuumGripper, PalletizingSequence
+Robot/       RobotArmInverseKinematics, RobotArmKinematicsSolver, VacuumGripper, PalletizingSequence
 Pallet/      PalletLoadState
 Forklift/    AutonomousForkliftController
 Shipping/    DockVehicleManager
@@ -105,12 +105,14 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 
 | enum | 값 | 용도 | 근거 |
 |---|---|---|---|
-| BoxType | Standard | 박스 종류. Standard = 360×280×340mm, 2kg. 새 박스는 값을 추가 | FR-03, 박스 타입 추가 대비 |
+| BoxType | Standard | 박스 종류. Standard = 180×140×170mm, 2kg (10/29 변경, 구 360×280×340mm). 새 박스는 값을 추가 | FR-03, 박스 타입 추가 대비 |
 | DestinationLane | Lane1, Lane2, Lane3 | 목적 레인. 바코드 L01·L02·L03과 대응 | FR-07 |
 | SettingsPreset | Default, Demonstration | 기본(L=3, N=10)·시연(L=2, N=3) 설정 선택 | FR-23 |
 | SimulationRunState | Stopped, Running, Paused | 전체 운전 상태 | FR-21 |
 | CameraView | Overview, Sorting, Palletizing, Dock | 카메라 뷰 | FR-02 |
 | PalletizingState | Idle, Picking, Placing, Returning | FR5 설비 상태 (화면 표시) | FR-09, FR-18 |
+| PalletizingResult | Success, NoBox, PalletFull, Busy, PickMoveFailed, AttachFailed, CarryMoveFailed, Dropped, PlaceCheckFailed | 박스 1개 적재 결과. Success일 때만 적재 수 증가 | FR-09, FR-10 |
+| VacuumAttachResult | Attached, NoBox, AlreadyHolding, TooFar, OffCenter, Tilted | 흡착 시도 결과 | FR-09 |
 | ForkliftState | Idle, MovingToPallet, Lifting, MovingToDock, Loading, Returning, StoppedByObstacle | AMR 설비 상태 (화면 표시) | FR-13~15, FR-18 |
 
 바코드 문자열(L01·L02·L03)을 DestinationLane으로 바꾸는 일은 BarcodeScanner의 `TryParseLane`이, 레인을 라벨 문자열로 바꾸는 일은 BarcodeLabelPrinter가 한다.
@@ -138,7 +140,7 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 | 함수 | 용도 |
 |---|---|
 | StartSimulation() | 운전 시작 |
-| PauseSimulation() | 일시정지 |
+| PauseSimulation() | 일시정지 (구현: Time.timeScale = 0으로 무동력 레인 박스까지 함께 정지) |
 | ResumeSimulation() | 재개 |
 | ResetSimulation() | 초기화 버튼: 운전 정지 후 모든 설비의 ResetToInitialState() 호출 |
 | SetSpeedMultiplier(float) | 생산 속도 조절 (설정의 범위 안) |
@@ -157,14 +159,16 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 | pallet | PalletLoadState | 이 레인 파레트 |
 | forklift | AutonomousForkliftController | 전담 AMR |
 | dock | DockVehicleManager | 전담 도크 |
+| simulatedPickSeconds | float | 로봇 대체 시험용. palletizing·pallet가 연결되지 않은 레인만 사용 |
+| UsesRobot / IsHaltedByFailure / PalletCompleteSignaled | bool | 로봇 적재 연결 / 적재 실패로 멈춤 / 6×L 완료 신호 보냄 |
 
 | 함수 | 용도 |
 |---|---|
-| Begin(SimulationSettings) | 설정 적용 후 레인 운전 시작 |
+| Begin(SimulationSettings) | 설정 적용(파레트에 L 전달) 후 레인 운전 시작 |
 | Pause() / Resume() | 일시정지·재개 전달 |
 | ResetToInitialState() | 초기화 버튼: 레인 순서 진행 중지, 레인 설비 초기화 호출 |
-| RunLaneLoop() | 방출 → 적재 반복 코루틴. 픽업 구역이 비고 FR5가 취급 중이 아닐 때만 방출 |
-| OnPalletCompleted() | 적재 완료 신호를 전담 AMR에 1회 전달 |
+| RunLaneLoop() | 방출 → 적재 반복 코루틴. 픽업 구역이 비고, 앞서 방출한 박스가 픽업에 도착했고, FR5가 취급 중이 아닐 때만 방출 (10/30: 정렬된 박스를 PalletizingSequence.PickAndPlace로 적재, 성공 때만 처리 수 증가. 실패 시 그 레인 정지. 로봇 미연결 레인만 simulatedPickSeconds 대체) |
+| OnPalletCompleted() | 적재 완료 신호를 전담 AMR에 1회 전달 (AMR 연결 전에는 기록만 하고 그 레인 적재 중지) |
 
 #### SimulationSettings (ScriptableObject)
 **클래스 용도**: 공정 설정값. 기본·시연 에셋 2개를 만든다. (FR-04, FR-12, FR-16, FR-21, FR-23)
@@ -194,6 +198,8 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 |---|---|
 | ApplyLabel(Texture2D) | 라벨 이미지를 박스 면에 표시 |
 | SetReadResult(DestinationLane) | 판독 결과 기록 |
+| SetHeld(bool) / IsHeld | 흡착 중 표시 (VacuumGripper가 설정, 정렬기·감속 구역이 흡착 중 박스를 건드리지 않음) |
+| SetPlacedOnPallet() | 파레트에 놓인 박스를 다시 잠들 수 있게 하고 해석 반복 16회로 (잠들지 않는 박스를 쌓으면 미끄러짐) |
 
 #### BoxSpawner
 **클래스 용도**: 투입점에 정한 간격으로 박스를 생성한다. 정체된 레인 바코드의 박스는 투입하지 않는다. (FR-03, FR-04, FR-19)
@@ -224,7 +230,7 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 | 함수 | 용도 |
 |---|---|
 | GetLabel(DestinationLane) : Texture2D | 레인 라벨 반환 (없으면 생성) |
-| CreateLabel(DestinationLane) : Texture2D | `BarcodeWriter.Write(text)` 결과 Color32[]로 텍스처 생성 |
+| CreateLabel(DestinationLane) : Texture2D | `BarcodeWriter.Encode(text)` 결과 BitMatrix를 검정·흰색 Color32[]로 칠해 텍스처 생성. 프로젝트의 ZXing 0.15.0 Unity 빌드는 `Write(text)`의 Color32 출력에 투명 픽셀이 섞여 판독에 실패한다(10/29 확인) |
 | ToBarcodeText(DestinationLane) : string | 레인 → L01·L02·L03 |
 
 #### MainConveyorController
@@ -254,7 +260,7 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 
 | 함수 | 용도 |
 |---|---|
-| OnTriggerEnter(Collider) | 박스 진입 시 판독 1회 |
+| OnTriggerEnter(Collider) | 박스 진입 시 판독 1회. 구현: readTrigger가 자식 트리거라 콜백이 오지 않으므로 매 프레임 영역 조회, 박스 중심이 카메라 중심선(흐름 방향 ±0.05m)에 오면 촬영, 실패 시 최대 4회 |
 | CapturePixels() : Color32[] | 판독 카메라 화면을 픽셀로 읽기 |
 | TryDecode(Color32[], out string) : bool | ZXing으로 해독 |
 | TryParseLane(string, out DestinationLane) : bool | 판독 문자열 L01·L02·L03을 레인으로 변환 |
@@ -278,21 +284,23 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 ### 4.3 레인
 
 #### LaneOccupancyMonitor
-**클래스 용도**: 레인별 순환 대기 수를 세고, 순환 3개에서 정체, 2개 유지, 1개 이하에서 해제한다. 정체 중에는 새 투입만 막고 순환 중인 박스 분기는 계속 허용한다. 중간 1개·픽업 1개 제한은 MiddleStopper와 PickupZoneAligner가 지킨다. (FR-19)
+**클래스 용도**: 레인별 순환 대기 수를 세고, 순환 3개에서 정체, 2개 유지, 1개 이하에서 해제한다. 순환 대기는 판독 후 분기 장치를 분기 없이 지나 메인을 다시 도는 박스다(10/29 구현 변경: 판독 시점부터 세면 투입 간격 6초에서 이동 중 박스만으로 정체가 난다). 정체 중에는 새 투입만 막고 순환 중인 박스 분기는 계속 허용한다. 중간 1개·픽업 1개 제한은 MiddleStopper와 PickupZoneAligner가 지킨다. (FR-19)
 
 | 변수 | 타입 | 용도 |
 |---|---|---|
 | lane | DestinationLane | 감시 레인 |
 | barcodeScanner | BarcodeScanner | 판독 완료 수신 |
 | diverter | LaneDiverter | 분기 성공 수신 |
-| CirculatingCount | int | 순환 대기 수 (최대 3) |
+| CirculatingCount | int | 순환 대기 수 (분기 없이 통과한 이 레인 박스) |
 | IsCongested | bool | 정체 상태 |
 | CongestionChanged | event Action&lt;bool&gt; | 정체 알람 |
 
 | 함수 | 용도 |
 |---|---|
-| OnBoxRead(LogisticsBox) | 이 레인 박스면 순환 대기 +1 |
-| OnBoxDiverted() | 분기 성공 시 순환 대기 −1 |
+| OnBoxRead(LogisticsBox) | 이 레인 판독 수 집계 |
+| OnBoxPassed(Rigidbody) | LaneDiverter.BoxPassed 수신: 순환 대기 +1 (10/29 추가) |
+| OnBoxDiverted(Rigidbody) | 분기 성공 시 순환 대기 −1, 레인 대기 +1 → 분기 장치 AcceptsBoxes 끔 |
+| OnBoxReleased(Rigidbody) | 중간 스토퍼 방출 시 레인 대기 −1 → AcceptsBoxes 켬 (중간 1개 제한) |
 | UpdateCongestion() | 3/2/1 기준으로 정체 판정 |
 | ResetToInitialState() | 초기화 버튼: 집계 0, 정체 해제 |
 
@@ -341,83 +349,108 @@ UI/          OperatorControlPanel, ProcessStatusRecorder
 ### 4.4 로봇·파레트
 
 #### RobotArmInverseKinematics
-**클래스 용도**: 흡착 툴이 아래를 향한 상태로 FR5 툴 끝을 목표 위치·수평 회전(yaw)에 맞추는 관절 각도를 해석적으로 계산하고, 관절을 그 각도로 움직인다. 계산식은 `Docs/Research/calculate_fr5_layout.py`의 `fk`·`ik_down`과 `Docs/Research/FR5_CAD_Validation/verify.py`의 `ik_all`을 C#으로 옮긴다. 치수·관절 제한은 `fairino5_v6.urdf` 기준이다. (FR-10)
+**클래스 용도**: 흡착 툴이 아래를 향한 목표(월드 위치·수평 회전)를 RobotArmKinematicsSolver로 관절 각도로 바꾸고 ArticulationBody 구동 목표로 옮긴다. 닿지 않거나 관절 제한 밖인 목표는 움직이지 않고 실패로 남긴다. 루트(FR5_LaneN) 원점·방향이 로봇 베이스이며, 받침 높이는 씬의 루트 위치(0.60 m)로 정해진다. (FR-10)
 
 | 변수 | 타입 | 용도 |
 |---|---|---|
 | joints | ArticulationBody[6] | URDF 관절 j1~j6 |
-| jointLowerLimits / jointUpperLimits | float[6] | 관절 제한 (rad). URDF 값, j3는 제조사 ±160°(±2.7925) 적용 |
-| shoulderHeight (D1) | float | 0.152 m |
-| upperArmLength (A) | float | 0.425 m |
-| forearmLength (B) | float | 0.39501 m |
-| wrist1Offset (D4) | float | 0.1021 m |
-| wrist2Offset (D5) | float | 0.102 m |
-| flangeOffset (D6) | float | 0.100 m (wrist3 원점 → 플랜지) |
-| toolLength | float | 플랜지 → 흡착면 0.1828 m (Schmalz 4컵 CAD) |
-| baseHeight | float | 바닥 → 로봇 베이스 높이 0.95 m (SRS 부록) |
-| IsMoving | bool | 이동 중 |
+| homeJointAngles | float[6] | 홈 자세 (도, URDF 부호). 레인1·2 = 0, -90, -90, -90, 90, 0 / 레인3 j1 = 90 |
+| toolLength | float = 0.15 | 플랜지 → 흡착면 (소형 SMC 4컵 명목 TCP, 접촉면 보정 후 확정) |
+| jointSpeedDegrees | float = 45 | 관절 최대 속도 (도/초) |
+| reachToleranceDegrees | float = 1 | 도달 판정 오차 (도) |
+| settleTimeoutSeconds | float = 3 | 구동 목표 이후 도달 대기 시간 |
+| linearStepMeters | float = 0.02 | 직선 이동 경로점 간격 |
+| IsMoving / LastMoveSucceeded / LastReachError | bool / bool / float | 이동 중 / 마지막 이동 성공 / 마지막 도달 오차 (m) |
+| referenceOffsets | double[6] | 관절 0도가 가리키는 URDF 각도. 씬이 다른 자세로 저장돼 관절 기준이 바뀐 경우를 앵커 회전으로 계산해 보정 |
 
 | 함수 | 용도 |
 |---|---|
-| ForwardKinematics(angles: float[]): Vector3 | 관절 각도 → 흡착면 위치 (`fk`) |
-| SolveDownwardTool(position: Vector3, yaw: float, out angles: float[]): bool | 아래 방향 툴로 목표에 닿는 관절 각도. 해가 없으면 false (`ik_all`) |
-| MoveTo(position: Vector3, yaw: float): IEnumerator | 계산한 각도로 관절 이동 |
-| MoveHome(): IEnumerator | 홈 자세 복귀 |
-| ResetToInitialState() | 초기화 버튼: 이동 중지, 관절을 홈 자세로 즉시 배치 |
+| WorldToBase(Vector3) / BaseToWorld(Vector3): Vector3 | Unity 월드 ↔ 베이스 오른손 좌표 (X 앞, Y 왼쪽, Z 위) |
+| GetJointAngles(): float[] / CurrentToolPosition: Vector3 | 현재 관절 각도 (도) / 흡착면 월드 위치 |
+| ForwardKinematics(angles: float[]): Vector3 | 관절 각도 → 흡착면 월드 위치 |
+| SolveDownwardTool(position, yaw, out angles): bool | 툴 아래 방향 해 중 현재 자세와 가장 가까운 해. 없으면 false |
+| MoveTo(position, yaw): IEnumerator | 관절 보간 이동 |
+| MoveLinear(position, yaw): IEnumerator | 흡착면 직선 이동 (접근·하강·상승). 경로점 하나라도 해가 없으면 출발하지 않음 |
+| MoveToJointAngles(angles): IEnumerator / MoveHome(): IEnumerator | 관절 각도 이동 / 홈 복귀 |
+| ResetToInitialState() | 초기화 버튼: 진행 중 이동을 끊고 홈 자세로 즉시 배치 |
 
-좌표: 계산은 로봇 베이스 기준 오른손 좌표계(Z 위, m)다. Unity 월드(왼손, Y 위)와의 변환은 이 클래스 안에서만 한다.
+#### RobotArmKinematicsSolver (static)
+**클래스 용도**: FR5 순기구학과 툴 아래 방향 해석적 역기구학 계산 전용. Unity 형식을 쓰지 않아 Unity 밖에서도 시험할 수 있다. 계산식은 `Docs/Research/calculate_fr5_layout.py`의 `fk`·`ik_down`, `FR5_CAD_Validation/verify.py`의 `ik_all` 위치 계산식이며, 옛 받침(950 mm)·툴(182.8 mm) 값은 쓰지 않는다. (FR-10)
+
+| 변수·함수 | 용도 |
+|---|---|
+| ShoulderHeight 0.152 / UpperArmLength 0.425 / ForearmLength 0.39501 / Wrist1Offset 0.1021 / Wrist2Offset 0.102 / FlangeOffset 0.100 | URDF 링크 치수 (m) |
+| LowerLimits / UpperLimits | 관절 제한 (rad). URDF 값, j3만 제조사 ±160° |
+| ForwardKinematics(q, toolLength, position, rotation) | 관절 → 흡착면 위치·툴 자세 |
+| SolveDownwardToolAll(x, y, z, yaw, toolLength): List | 모든 해 (yaw·yaw+180° 대칭, 2π 차이 포함, 제한 밖 제외, 순기구학 재검사) |
+| SolveDownwardTool(..., currentAngles, out best): bool | 현재 자세와 가장 가까운 해 |
 
 #### VacuumGripper
-**클래스 용도**: 흡착점에서 박스를 부착하고 적재점에서 해제한다. (FR-09)
+**클래스 용도**: 흡착면이 박스 윗면에 실제로 닿아 있을 때만 박스를 붙이고 적재점에서 해제한다. 툴 루트(VacuumTool, wrist3_link 자식)에 레인마다 1개. (FR-09)
+흡착 중 물리 상태: 박스(2 kg)는 동적 Rigidbody 그대로 두고 중력만 끈 뒤, 붙인 순간의 흡착점 기준 상대 자세를 유지하도록 매 물리 단계 속도·각속도를 맞춘다(순간 이동·부모 변경 없음). 해제 시 중력 복구, 속도 0. 툴 가속도로 계산한 필요 흡착력 m·|a − g|가 holdForce를 넘으면 떨어뜨린다.
+정렬기가 kinematic으로 고정한 박스는 흡착할 때 고정을 풀어 동적으로 바꾸고 `LogisticsBox.IsHeld`를 켠다(정렬기·감속 구역이 흡착 중 박스를 건드리지 않음).
+쓰지 않는 방식(10/30 시험 근거): FixedJoint↔ArticulationBody 연결, 박스·로봇 Physics.IgnoreCollision(둘 다 Unity 비정상 종료), kinematic 추종(툴과 겹칠 때 로봇을 밀어 흔들림).
 
 | 변수 | 타입 | 용도 |
 |---|---|---|
-| suctionPoint | Transform | 흡착 기준점 |
-| HeldBox | LogisticsBox | 흡착 중인 박스 |
+| suctionPoint | Transform | 흡착면 중심 (VacuumTool/SuctionPoint, +Y = 흡착 방향) |
+| toolLink | ArticulationBody | 툴이 붙은 링크 (wrist3_link) |
+| contactDistance | float = 0.01 | 흡착면 ↔ 박스 윗면 허용 간격 (m) |
+| centerTolerance | float = 0.03 | 중심 허용 어긋남 (m) |
+| tiltToleranceDegrees | float = 10 | 툴 축 ↔ 윗면 수직 허용 각도 |
+| holdForce | float = 100 | 흡착 유지 힘 (N, 명목값·컵 사양 확인 후 조정) |
+| HeldBox / IsHolding | LogisticsBox / bool | 흡착 중인 박스 |
+| LastAttachResult | VacuumAttachResult | Attached·NoBox·AlreadyHolding·TooFar·OffCenter·Tilted |
+| LastRequiredForce / PeakRequiredForce | float | 필요 흡착력 (N) |
+| Attached / Released / Dropped | event Action&lt;LogisticsBox&gt; | 흡착 / 해제 / 흡착력 초과로 떨어짐 |
 
 | 함수 | 용도 |
 |---|---|
-| Attach(LogisticsBox) | 부착 |
-| Release() | 해제 |
+| FindBoxUnderSuction(): LogisticsBox | 흡착면 아래 0.05 m 안의 박스 |
+| TryAttach(LogisticsBox): VacuumAttachResult | 접촉 조건 검사 후 흡착 |
+| Release(): bool | 해제 |
 | ResetToInitialState() | 초기화 버튼: 흡착 해제 (박스는 BoxSpawner가 제거) |
 
 #### PalletizingSequence
-**클래스 용도**: 픽업 구역 박스를 흡착해 파레트의 다음 지정 위치에 놓는 동작 순서를 진행한다. (FR-09, FR-10)
+**클래스 용도**: 픽업 구역에 정렬된 박스 1개를 흡착해 파레트의 다음 지정 자리에 놓는다. 로봇 루트(FR5_LaneN)에 레인마다 1개. (FR-09, FR-10)
+순서: 흡착점 위 접근 → 직선 하강 → 흡착 → 정렬기 ClearZone → 운반 높이로 직선 상승 → 자리 위 이동 → 직선 하강 → 해제 → 박스 SetPlacedOnPallet → 안정 대기 → 놓인 위치·수평 확인 → 성공 시에만 PalletLoadState.ConfirmPlaced → 상승 → 홈. 운반 높이 = max(파레트 L층 윗면, 픽업 박스 윗면) + 박스 높이 + 여유. 픽업 yaw = 박스 yaw, 적재 yaw = 자리 yaw.
 
 | 변수 | 타입 | 용도 |
 |---|---|---|
 | arm | RobotArmInverseKinematics | FR5 팔 |
 | gripper | VacuumGripper | 흡착 툴 |
+| approachHeight / contactGap | float = 0.10 / 0.003 | 접근 높이 / 흡착 시 흡착면과 윗면 간격 |
+| transitClearance / releaseGap | float = 0.08 / 0.005 | 운반 여유 / 해제 높이 |
+| settleSeconds / placeTolerance / tiltToleranceDegrees | float = 0.5 / 0.02 / 5 | 해제 후 대기 / 놓인 위치 허용 / 기울기 허용 |
 | State | PalletizingState | 설비 상태 |
+| LastResult / LastPlaceError | PalletizingResult / float | 마지막 결과 / 놓인 위치 오차 (m) |
+| IsBusy | bool | 동작 중 |
 
 | 함수 | 용도 |
 |---|---|
-| PickAndPlace(PickupZoneAligner, PalletLoadState) | 흡착 → 적재 위치로 이동 → 해제 → 복귀 코루틴 |
-| ResetToInitialState() | 초기화 버튼: 동작 중지, State = Idle, 팔·툴 초기화 |
+| PickAndPlace(PickupZoneAligner, PalletLoadState): IEnumerator | 박스 1개 적재. 결과는 LastResult |
+| ResetToInitialState() | 초기화 버튼: 진행 중 순서 중단, 팔 홈 배치, 흡착 해제, Idle |
 
 #### PalletLoadState
-**클래스 용도**: 파레트의 사전 지정 적재 위치(층당 6자리)와 적재 수를 관리한다. 한 층 6자리를 채워야 다음 층으로 가고, 6×L이면 완료다. AMR 반출 후 같은 위치에 빈 파레트를 다시 만든다. (FR-10, FR-11, FR-12, FR-20)
+**클래스 용도**: 파레트의 사전 지정 적재 위치(층당 6자리)와 적재 수를 관리한다. 배열 순서대로 한 층 6자리를 채운 뒤 다음 층, 6×L이면 완료. 레인마다 PalletLoadPoint에 1개, 자리 표시점은 그 자식 Slot_1~6(박스 사이 10 mm, 180 mm 변이 Z, 로봇에서 먼 자리부터). (FR-10, FR-11, FR-12)
+빈 파레트 재생성(RespawnEmptyPallet, emptyPalletPrefab, FR-20)은 AMR 반출 구현(WBS 57·72) 때 작성한다.
 
 | 변수 | 타입 | 용도 |
 |---|---|---|
-| layerSlots | Transform[6] | 한 층 6자리 지정 위치 |
-| layerHeight | float | 층 높이 |
-| emptyPalletPrefab | GameObject | 빈 파레트 |
-| PlacedCount | int | 적재 수 |
-| CurrentLayer | int | 현재 층 (PlacedCount / 6) |
+| layerSlots | Transform[6] | 한 층 6자리 (박스 바닥 중심·방향, 1단) |
+| layerHeight | float = 0.17 | 층 높이 |
+| layerCount | int | L (운전 시작 때 설정값) |
+| PlacedCount / CurrentLayer / Capacity | int | 적재 수 / 현재 층 / 6×L |
 | IsComplete | bool | 6×L 완료 |
-| BoxPlaced | event Action | 박스 1개 적재 완료 (기록용) |
-| Completed | event Action | 완료 신호 |
+| StackTopHeight | float | L층 윗면 높이 (운반 높이 계산) |
+| BoxPlaced / Completed | event Action | 박스 1개 적재 / 완료 1회 |
 
 | 함수 | 용도 |
 |---|---|
-| Configure(int layerCount) | L 적용 |
-| GetNextSlotPose() | 다음 적재 위치 |
-| ConfirmPlaced() | 적재 수 +1, BoxPlaced 알림, 6×L이면 완료 |
-| RespawnEmptyPallet() | 반출 후 빈 파레트 생성 |
-| ResetToInitialState() | 초기화 버튼: 적재 수 0, 층 0, 빈 파레트 1개만 남김 |
-
-### 4.5 운반·출하
+| Configure(int layerCount) | L 적용 (적재 중에는 바꾸지 않음) |
+| GetNextSlotPose(out Pose): bool | 다음 자리. 완료·자리 없음이면 false |
+| ConfirmPlaced() | 놓인 위치 확인된 박스 1개 계수, 6×L이면 Completed |
+| ResetToInitialState() | 초기화 버튼: 적재 수 0 |
 
 #### AutonomousForkliftController
 **클래스 용도**: 전담 레인의 완료 신호를 받으면 경로를 탐색해 이동하고 장애물이면 정지하고, 장애물이 사라진 뒤 5초가 지나면 재개한다. 완성 파레트를 인양해 전담 도크 차량에 상차하고 실패하면 재시도한다. (FR-13, FR-14, FR-15)

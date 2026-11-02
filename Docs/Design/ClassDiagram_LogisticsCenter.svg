@@ -1,51 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2466" height="2055" viewBox="0 0 2466 2055" font-family="Noto Sans Mono CJK KR">
-<defs>
-<marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#111" stroke-width="1.4"/></marker>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="2502" height="2379" viewBox="0 0 2502 2379" font-family="Noto Sans Mono CJK KR">
+<defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#111" stroke-width="1.4"/></marker></defs>
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="40" y="52" font-size="26" font-weight="bold" fill="#111">물류센터 자동화 클래스 다이어그램</text>
 <text x="40" y="84" font-size="14" fill="#444" xml:space="preserve">실선 화살표: 연결 참조(변수로 가짐)   점선 화살표: 사용(함수 인자·박스 데이터)   - private(Inspector 연결 포함)   + public</text>
 <path d="M900.0,430.0 L900.0,478.0" fill="none" stroke="#111" stroke-width="1.3"/>
-<path d="M195.0,478.0 L1269.0,478.0" fill="none" stroke="#111" stroke-width="1.3"/>
+<path d="M195.0,478.0 L1281.0,478.0" fill="none" stroke="#111" stroke-width="1.3"/>
 <path d="M195.0,478.0 L195.0,526.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
 <path d="M552.0,478.0 L552.0,526.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
 <path d="M900.0,478.0 L900.0,526.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1269.0,478.0 L1269.0,526.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1269.0,826.0 L1269.0,874.0" fill="none" stroke="#111" stroke-width="1.3"/>
-<path d="M195.0,874.0 L2301.0,874.0" fill="none" stroke="#111" stroke-width="1.3"/>
-<path d="M195.0,874.0 L195.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M552.0,874.0 L552.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M900.0,874.0 L900.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1269.0,874.0 L1269.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1647.0,874.0 L1647.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1989.0,874.0 L1989.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M2301.0,874.0 L2301.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1269.0,1086.0 L1269.0,1253.0" fill="none" stroke="#111" stroke-width="1.3"/>
-<path d="M1269.0,1253.0 L1647.0,1253.0" fill="none" stroke="#111" stroke-width="1.3"/>
-<path d="M1269.0,1253.0 L1269.0,1301.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1647.0,1253.0 L1647.0,1301.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1281.0,478.0 L1281.0,526.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1281.0,911.0 L1281.0,959.0" fill="none" stroke="#111" stroke-width="1.3"/>
+<path d="M195.0,959.0 L2337.0,959.0" fill="none" stroke="#111" stroke-width="1.3"/>
+<path d="M195.0,959.0 L195.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M552.0,959.0 L552.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M900.0,959.0 L900.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1281.0,959.0 L1281.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1677.0,959.0 L1677.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M2025.0,959.0 L2025.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M2337.0,959.0 L2337.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1281.0,1290.0 L1281.0,1355.0" fill="none" stroke="#111" stroke-width="1.3"/>
+<path d="M1281.0,1355.0 L1677.0,1355.0" fill="none" stroke="#111" stroke-width="1.3"/>
+<path d="M1281.0,1355.0 L1281.0,1403.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1677.0,1355.0 L1677.0,1403.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
 <path d="M1102.0,156.0 L1046.0,156.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1492.0,156.0 L1436.0,156.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1802.0,156.0 L1858.0,156.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1647.0,130.0 L1647.0,108.0 L900.0,108.0 L900.0,130.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1516.0,156.0 L1460.0,156.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1838.0,156.0 L1894.0,156.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1677.0,130.0 L1677.0,108.0 L900.0,108.0 L900.0,130.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
 <path d="M80.0,526.0 L80.0,294.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M80.0,758.0 L80.0,922.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M155.0,1154.0 L155.0,1301.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M255.0,1154.0 L255.0,1239.0 L552.0,1239.0 L552.0,1301.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
-<path d="M1102.0,962.0 L1046.0,962.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
-<path d="M1436.0,962.0 L1492.0,962.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
-<path d="M1858.0,992.0 L1802.0,992.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
-<path d="M2120.0,962.0 L2176.0,962.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
-<path d="M350.0,740.0 L378.0,740.0 L378.0,1703.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M350.0,1136.0 L378.0,1136.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M1046.0,1085.0 L1074.0,1085.0 L1074.0,1703.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M195.0,1550.0 L195.0,1703.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M552.0,1513.0 L552.0,1703.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M1647.0,1448.0 L1647.0,1703.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M195.0,1703.0 L1647.0,1703.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
-<path d="M552.0,1703.0 L552.0,1765.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
-<rect x="740.0" y="1731" width="1700.0" height="298" fill="none" stroke="#777" stroke-dasharray="4 4"/>
-<text x="750.0" y="1752" font-size="13" fill="#444">LogisticsEnums.cs — 열거형 (변수 타입으로 사용)</text>
+<path d="M80.0,758.0 L80.0,1007.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M155.0,1239.0 L155.0,1403.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M255.0,1239.0 L255.0,1341.0 L552.0,1341.0 L552.0,1403.0" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#open)"/>
+<path d="M1102.0,1047.0 L1046.0,1047.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
+<path d="M1460.0,1047.0 L1516.0,1047.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
+<path d="M1894.0,1077.0 L1838.0,1077.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
+<path d="M2156.0,1047.0 L2212.0,1047.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
+<path d="M1102.0,1443.0 L1046.0,1443.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
+<path d="M350.0,740.0 L378.0,740.0 L378.0,1890.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M350.0,1221.0 L378.0,1221.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M1046.0,1187.0 L1074.0,1187.0 L1074.0,1890.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M195.0,1652.0 L195.0,1890.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M552.0,1615.0 L552.0,1890.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M1677.0,1720.0 L1677.0,1890.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M195.0,1890.0 L1677.0,1890.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"/>
+<path d="M552.0,1890.0 L552.0,1952.0" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5" marker-end="url(#open)"/>
+<rect x="740.0" y="1918" width="1736.0" height="435" fill="none" stroke="#777" stroke-dasharray="4 4"/>
+<text x="750.0" y="1939" font-size="13" fill="#444">LogisticsEnums.cs — 열거형 (변수 타입으로 사용)</text>
 <rect x="754.0" y="130" width="292.0" height="300" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
 <text x="900.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LogisticsSimulationController</text>
 <line x1="754.0" y1="164" x2="1046.0" y2="164" stroke="#111" stroke-width="1.1"/>
@@ -64,44 +63,44 @@
 <text x="763.0" y="385" font-size="12" fill="#111" xml:space="preserve">+ ResetSimulation(): void</text>
 <text x="763.0" y="402" font-size="12" fill="#111" xml:space="preserve">+ SetSpeedMultiplier(multiplier: float): void</text>
 <text x="763.0" y="419" font-size="12" fill="#111" xml:space="preserve">+ SelectPreset(preset: SettingsPreset): void</text>
-<rect x="1102.0" y="130" width="334.0" height="249" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1269.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">ProcessStatusRecorder</text>
-<line x1="1102.0" y1="164" x2="1436.0" y2="164" stroke="#111" stroke-width="1.1"/>
+<rect x="1102.0" y="130" width="358.0" height="249" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1281.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">ProcessStatusRecorder</text>
+<line x1="1102.0" y1="164" x2="1460.0" y2="164" stroke="#111" stroke-width="1.1"/>
 <text x="1111.0" y="184" font-size="12" fill="#111" xml:space="preserve">- simulation: LogisticsSimulationController</text>
 <text x="1111.0" y="201" font-size="12" fill="#111" xml:space="preserve">- recordFolder: string</text>
 <text x="1111.0" y="218" font-size="12" fill="#111" xml:space="preserve">- retentionDays: int = 30</text>
 <text x="1111.0" y="235" font-size="12" fill="#111" xml:space="preserve">+ ProcessedBoxCount: int</text>
 <text x="1111.0" y="252" font-size="12" fill="#111" xml:space="preserve">+ BoxesPerHour: float</text>
-<line x1="1102.0" y1="263" x2="1436.0" y2="263" stroke="#111" stroke-width="1.1"/>
+<line x1="1102.0" y1="263" x2="1460.0" y2="263" stroke="#111" stroke-width="1.1"/>
 <text x="1111.0" y="283" font-size="12" fill="#111" xml:space="preserve">- OpenTodayFile(): void</text>
 <text x="1111.0" y="300" font-size="12" fill="#111" xml:space="preserve">- DeleteExpiredFiles(): void</text>
 <text x="1111.0" y="317" font-size="12" fill="#111" xml:space="preserve">- OnBoxProcessed(): void</text>
 <text x="1111.0" y="334" font-size="12" fill="#111" xml:space="preserve">+ CollectStatus(): void</text>
 <text x="1111.0" y="351" font-size="12" fill="#111" xml:space="preserve">+ WriteRecord(): void</text>
 <text x="1111.0" y="368" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="1492.0" y="130" width="310.0" height="249" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1647.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">OperatorControlPanel</text>
-<line x1="1492.0" y1="164" x2="1802.0" y2="164" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="184" font-size="12" fill="#111" xml:space="preserve">- simulation: LogisticsSimulationController</text>
-<text x="1501.0" y="201" font-size="12" fill="#111" xml:space="preserve">- statusRecorder: ProcessStatusRecorder</text>
-<text x="1501.0" y="218" font-size="12" fill="#111" xml:space="preserve">- cameraSwitcher: CameraViewSwitcher</text>
-<line x1="1492.0" y1="229" x2="1802.0" y2="229" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="249" font-size="12" fill="#111" xml:space="preserve">+ OnStart(): void</text>
-<text x="1501.0" y="266" font-size="12" fill="#111" xml:space="preserve">+ OnPause(): void</text>
-<text x="1501.0" y="283" font-size="12" fill="#111" xml:space="preserve">+ OnResume(): void</text>
-<text x="1501.0" y="300" font-size="12" fill="#111" xml:space="preserve">+ OnReset(): void</text>
-<text x="1501.0" y="317" font-size="12" fill="#111" xml:space="preserve">+ OnSpeedChanged(value: float): void</text>
-<text x="1501.0" y="334" font-size="12" fill="#111" xml:space="preserve">+ OnPresetSelected(preset: SettingsPreset): void</text>
-<text x="1501.0" y="351" font-size="12" fill="#111" xml:space="preserve">+ OnViewSelected(view: CameraView): void</text>
-<text x="1501.0" y="368" font-size="12" fill="#111" xml:space="preserve">- RefreshDisplay(): void</text>
-<rect x="1858.0" y="130" width="262.0" height="130" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1989.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">CameraViewSwitcher</text>
-<line x1="1858.0" y1="164" x2="2120.0" y2="164" stroke="#111" stroke-width="1.1"/>
-<text x="1867.0" y="184" font-size="12" fill="#111" xml:space="preserve">- viewCameras: Camera[]</text>
-<text x="1867.0" y="201" font-size="12" fill="#111" xml:space="preserve">+ CurrentView: CameraView</text>
-<line x1="1858.0" y1="212" x2="2120.0" y2="212" stroke="#111" stroke-width="1.1"/>
-<text x="1867.0" y="232" font-size="12" fill="#111" xml:space="preserve">+ SwitchTo(view: CameraView): void</text>
-<text x="1867.0" y="249" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="1516.0" y="130" width="322.0" height="249" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1677.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">OperatorControlPanel</text>
+<line x1="1516.0" y1="164" x2="1838.0" y2="164" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="184" font-size="12" fill="#111" xml:space="preserve">- simulation: LogisticsSimulationController</text>
+<text x="1525.0" y="201" font-size="12" fill="#111" xml:space="preserve">- statusRecorder: ProcessStatusRecorder</text>
+<text x="1525.0" y="218" font-size="12" fill="#111" xml:space="preserve">- cameraSwitcher: CameraViewSwitcher</text>
+<line x1="1516.0" y1="229" x2="1838.0" y2="229" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="249" font-size="12" fill="#111" xml:space="preserve">+ OnStart(): void</text>
+<text x="1525.0" y="266" font-size="12" fill="#111" xml:space="preserve">+ OnPause(): void</text>
+<text x="1525.0" y="283" font-size="12" fill="#111" xml:space="preserve">+ OnResume(): void</text>
+<text x="1525.0" y="300" font-size="12" fill="#111" xml:space="preserve">+ OnReset(): void</text>
+<text x="1525.0" y="317" font-size="12" fill="#111" xml:space="preserve">+ OnSpeedChanged(value: float): void</text>
+<text x="1525.0" y="334" font-size="12" fill="#111" xml:space="preserve">+ OnPresetSelected(preset: SettingsPreset): void</text>
+<text x="1525.0" y="351" font-size="12" fill="#111" xml:space="preserve">+ OnViewSelected(view: CameraView): void</text>
+<text x="1525.0" y="368" font-size="12" fill="#111" xml:space="preserve">- RefreshDisplay(): void</text>
+<rect x="1894.0" y="130" width="262.0" height="130" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2025.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">CameraViewSwitcher</text>
+<line x1="1894.0" y1="164" x2="2156.0" y2="164" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="184" font-size="12" fill="#111" xml:space="preserve">- viewCameras: Camera[]</text>
+<text x="1903.0" y="201" font-size="12" fill="#111" xml:space="preserve">+ CurrentView: CameraView</text>
+<line x1="1894.0" y1="212" x2="2156.0" y2="212" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="232" font-size="12" fill="#111" xml:space="preserve">+ SwitchTo(view: CameraView): void</text>
+<text x="1903.0" y="249" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
 <rect x="754.0" y="526" width="292.0" height="195" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
 <text x="900.0" y="543" font-size="11" text-anchor="middle" fill="#444">«ScriptableObject»</text>
 <text x="900.0" y="563" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">SimulationSettings</text>
@@ -137,9 +136,9 @@
 <text x="415.0" y="645" font-size="12" fill="#111" xml:space="preserve">+ Stop(): void</text>
 <text x="415.0" y="662" font-size="12" fill="#111" xml:space="preserve">+ SetSpeedMultiplier(multiplier: float): void</text>
 <text x="415.0" y="679" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="1102.0" y="526" width="334.0" height="300" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1269.0" y="549" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LaneProcessController</text>
-<line x1="1102.0" y1="560" x2="1436.0" y2="560" stroke="#111" stroke-width="1.1"/>
+<rect x="1102.0" y="526" width="358.0" height="385" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1281.0" y="549" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LaneProcessController</text>
+<line x1="1102.0" y1="560" x2="1460.0" y2="560" stroke="#111" stroke-width="1.1"/>
 <text x="1111.0" y="580" font-size="12" fill="#111" xml:space="preserve">- lane: DestinationLane</text>
 <text x="1111.0" y="597" font-size="12" fill="#111" xml:space="preserve">- occupancyMonitor: LaneOccupancyMonitor</text>
 <text x="1111.0" y="614" font-size="12" fill="#111" xml:space="preserve">- middleStopper: MiddleStopper</text>
@@ -148,119 +147,133 @@
 <text x="1111.0" y="665" font-size="12" fill="#111" xml:space="preserve">- pallet: PalletLoadState</text>
 <text x="1111.0" y="682" font-size="12" fill="#111" xml:space="preserve">- forklift: AutonomousForkliftController</text>
 <text x="1111.0" y="699" font-size="12" fill="#111" xml:space="preserve">- dock: DockVehicleManager</text>
-<line x1="1102.0" y1="710" x2="1436.0" y2="710" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="730" font-size="12" fill="#111" xml:space="preserve">+ Begin(settings: SimulationSettings): void</text>
-<text x="1111.0" y="747" font-size="12" fill="#111" xml:space="preserve">+ Pause(): void</text>
-<text x="1111.0" y="764" font-size="12" fill="#111" xml:space="preserve">+ Resume(): void</text>
-<text x="1111.0" y="781" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<text x="1111.0" y="798" font-size="12" fill="#111" xml:space="preserve">- RunLaneLoop(): IEnumerator</text>
-<text x="1111.0" y="815" font-size="12" fill="#111" xml:space="preserve">- OnPalletCompleted(): void</text>
-<rect x="40" y="922" width="310.0" height="232" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="195.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LaneOccupancyMonitor</text>
-<line x1="40" y1="956" x2="350.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="49" y="976" font-size="12" fill="#111" xml:space="preserve">- lane: DestinationLane</text>
-<text x="49" y="993" font-size="12" fill="#111" xml:space="preserve">- barcodeScanner: BarcodeScanner</text>
-<text x="49" y="1010" font-size="12" fill="#111" xml:space="preserve">- diverter: LaneDiverter</text>
-<text x="49" y="1027" font-size="12" fill="#111" xml:space="preserve">+ CirculatingCount: int</text>
-<text x="49" y="1044" font-size="12" fill="#111" xml:space="preserve">+ IsCongested: bool</text>
-<text x="49" y="1061" font-size="12" fill="#111" xml:space="preserve">+ CongestionChanged: event Action&lt;bool&gt;</text>
-<line x1="40" y1="1072" x2="350.0" y2="1072" stroke="#111" stroke-width="1.1"/>
-<text x="49" y="1092" font-size="12" fill="#111" xml:space="preserve">- OnBoxRead(box: LogisticsBox): void</text>
-<text x="49" y="1109" font-size="12" fill="#111" xml:space="preserve">- OnBoxDiverted(body: Rigidbody): void</text>
-<text x="49" y="1126" font-size="12" fill="#111" xml:space="preserve">- UpdateCongestion(): void</text>
-<text x="49" y="1143" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="406.0" y="922" width="292.0" height="147" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="552.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">MiddleStopper</text>
-<line x1="406.0" y1="956" x2="698.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="415.0" y="976" font-size="12" fill="#111" xml:space="preserve">- stopperBody: Rigidbody</text>
-<text x="415.0" y="993" font-size="12" fill="#111" xml:space="preserve">- holdSensor: Collider</text>
-<text x="415.0" y="1010" font-size="12" fill="#111" xml:space="preserve">+ HasWaitingBox: bool</text>
-<line x1="406.0" y1="1021" x2="698.0" y2="1021" stroke="#111" stroke-width="1.1"/>
-<text x="415.0" y="1041" font-size="12" fill="#111" xml:space="preserve">+ ReleaseOne(): IEnumerator</text>
-<text x="415.0" y="1058" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="754.0" y="922" width="292.0" height="181" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="900.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PickupZoneAligner</text>
-<line x1="754.0" y1="956" x2="1046.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="763.0" y="976" font-size="12" fill="#111" xml:space="preserve">- pickupPoint: Transform</text>
-<text x="763.0" y="993" font-size="12" fill="#111" xml:space="preserve">- arrivalSensor: Collider</text>
-<text x="763.0" y="1010" font-size="12" fill="#111" xml:space="preserve">+ CurrentBox: LogisticsBox</text>
-<text x="763.0" y="1027" font-size="12" fill="#111" xml:space="preserve">+ IsEmpty: bool</text>
-<line x1="754.0" y1="1038" x2="1046.0" y2="1038" stroke="#111" stroke-width="1.1"/>
-<text x="763.0" y="1058" font-size="12" fill="#111" xml:space="preserve">- OnTriggerEnter(other: Collider): void</text>
-<text x="763.0" y="1075" font-size="12" fill="#111" xml:space="preserve">- AlignToPickupPoint(box: LogisticsBox): void</text>
-<text x="763.0" y="1092" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="1102.0" y="922" width="334.0" height="164" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1269.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletizingSequence</text>
-<line x1="1102.0" y1="956" x2="1436.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="976" font-size="12" fill="#111" xml:space="preserve">- arm: RobotArmInverseKinematics</text>
-<text x="1111.0" y="993" font-size="12" fill="#111" xml:space="preserve">- gripper: VacuumGripper</text>
-<text x="1111.0" y="1010" font-size="12" fill="#111" xml:space="preserve">+ State: PalletizingState</text>
-<line x1="1102.0" y1="1021" x2="1436.0" y2="1021" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="1041" font-size="12" fill="#111" xml:space="preserve">+ PickAndPlace(pickup: PickupZoneAligner,</text>
-<text x="1111.0" y="1058" font-size="12" fill="#111" xml:space="preserve">      pallet: PalletLoadState): IEnumerator</text>
-<text x="1111.0" y="1075" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="1492.0" y="922" width="310.0" height="283" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1647.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletLoadState</text>
-<line x1="1492.0" y1="956" x2="1802.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="976" font-size="12" fill="#111" xml:space="preserve">- layerSlots: Transform[]</text>
-<text x="1501.0" y="993" font-size="12" fill="#111" xml:space="preserve">- layerHeight: float</text>
-<text x="1501.0" y="1010" font-size="12" fill="#111" xml:space="preserve">- emptyPalletPrefab: GameObject</text>
-<text x="1501.0" y="1027" font-size="12" fill="#111" xml:space="preserve">+ PlacedCount: int</text>
-<text x="1501.0" y="1044" font-size="12" fill="#111" xml:space="preserve">+ CurrentLayer: int</text>
-<text x="1501.0" y="1061" font-size="12" fill="#111" xml:space="preserve">+ IsComplete: bool</text>
-<text x="1501.0" y="1078" font-size="12" fill="#111" xml:space="preserve">+ BoxPlaced: event Action</text>
-<text x="1501.0" y="1095" font-size="12" fill="#111" xml:space="preserve">+ Completed: event Action</text>
-<line x1="1492.0" y1="1106" x2="1802.0" y2="1106" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="1126" font-size="12" fill="#111" xml:space="preserve">+ Configure(layerCount: int): void</text>
-<text x="1501.0" y="1143" font-size="12" fill="#111" xml:space="preserve">+ GetNextSlotPose(): Pose</text>
-<text x="1501.0" y="1160" font-size="12" fill="#111" xml:space="preserve">+ ConfirmPlaced(): void</text>
-<text x="1501.0" y="1177" font-size="12" fill="#111" xml:space="preserve">+ RespawnEmptyPallet(): void</text>
-<text x="1501.0" y="1194" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="1858.0" y="922" width="262.0" height="266" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1989.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">AutonomousForkliftController</text>
-<line x1="1858.0" y1="956" x2="2120.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="1867.0" y="976" font-size="12" fill="#111" xml:space="preserve">- homePoint: Transform</text>
-<text x="1867.0" y="993" font-size="12" fill="#111" xml:space="preserve">- navigationAgent: NavMeshAgent</text>
-<text x="1867.0" y="1010" font-size="12" fill="#111" xml:space="preserve">- obstacleSensor: Collider</text>
-<text x="1867.0" y="1027" font-size="12" fill="#111" xml:space="preserve">- maximumLoadRetries: int</text>
-<text x="1867.0" y="1044" font-size="12" fill="#111" xml:space="preserve">- resumeDelaySeconds: float = 5</text>
-<text x="1867.0" y="1061" font-size="12" fill="#111" xml:space="preserve">+ State: ForkliftState</text>
-<text x="1867.0" y="1078" font-size="12" fill="#111" xml:space="preserve">+ PalletRemoved: event Action</text>
-<line x1="1858.0" y1="1089" x2="2120.0" y2="1089" stroke="#111" stroke-width="1.1"/>
-<text x="1867.0" y="1109" font-size="12" fill="#111" xml:space="preserve">+ RequestPickup(pallet: PalletLoadState,</text>
-<text x="1867.0" y="1126" font-size="12" fill="#111" xml:space="preserve">      dock: DockVehicleManager): void</text>
-<text x="1867.0" y="1143" font-size="12" fill="#111" xml:space="preserve">- TransportRoutine(): IEnumerator</text>
-<text x="1867.0" y="1160" font-size="12" fill="#111" xml:space="preserve">- WaitForObstacleClear(): IEnumerator</text>
-<text x="1867.0" y="1177" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="2176.0" y="922" width="250.0" height="232" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="2301.0" y="945" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">DockVehicleManager</text>
-<line x1="2176.0" y1="956" x2="2426.0" y2="956" stroke="#111" stroke-width="1.1"/>
-<text x="2185.0" y="976" font-size="12" fill="#111" xml:space="preserve">- truck: Transform</text>
-<text x="2185.0" y="993" font-size="12" fill="#111" xml:space="preserve">- dockPoint: Transform</text>
-<text x="2185.0" y="1010" font-size="12" fill="#111" xml:space="preserve">- cargoSlots: Transform[]</text>
-<text x="2185.0" y="1027" font-size="12" fill="#111" xml:space="preserve">+ LoadedPalletCount: int</text>
-<text x="2185.0" y="1044" font-size="12" fill="#111" xml:space="preserve">+ IsFull: bool</text>
-<line x1="2176.0" y1="1055" x2="2426.0" y2="1055" stroke="#111" stroke-width="1.1"/>
-<text x="2185.0" y="1075" font-size="12" fill="#111" xml:space="preserve">+ Configure(capacity: int): void</text>
-<text x="2185.0" y="1092" font-size="12" fill="#111" xml:space="preserve">+ GetNextCargoSlot(): Transform</text>
-<text x="2185.0" y="1109" font-size="12" fill="#111" xml:space="preserve">+ RegisterLoaded(): void</text>
-<text x="2185.0" y="1126" font-size="12" fill="#111" xml:space="preserve">- DepartAndReplaceTruck(): IEnumerator</text>
-<text x="2185.0" y="1143" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="40" y="1301" width="310.0" height="249" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="195.0" y="1324" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BarcodeScanner</text>
-<line x1="40" y1="1335" x2="350.0" y2="1335" stroke="#111" stroke-width="1.1"/>
-<text x="49" y="1355" font-size="12" fill="#111" xml:space="preserve">- readCamera: Camera</text>
-<text x="49" y="1372" font-size="12" fill="#111" xml:space="preserve">- readTrigger: Collider</text>
-<text x="49" y="1389" font-size="12" fill="#111" xml:space="preserve">- captureTexture: RenderTexture</text>
-<text x="49" y="1406" font-size="12" fill="#111" xml:space="preserve">- decoder: ZXing.BarcodeReader</text>
-<text x="49" y="1423" font-size="12" fill="#111" xml:space="preserve">+ BoxRead: event Action&lt;LogisticsBox&gt;</text>
-<line x1="40" y1="1434" x2="350.0" y2="1434" stroke="#111" stroke-width="1.1"/>
-<text x="49" y="1454" font-size="12" fill="#111" xml:space="preserve">- OnTriggerEnter(other: Collider): void</text>
-<text x="49" y="1471" font-size="12" fill="#111" xml:space="preserve">- CapturePixels(): Color32[]</text>
-<text x="49" y="1488" font-size="12" fill="#111" xml:space="preserve">- TryDecode(pixels: Color32[],</text>
-<text x="49" y="1505" font-size="12" fill="#111" xml:space="preserve">      out text: string): bool</text>
-<text x="49" y="1522" font-size="12" fill="#111" xml:space="preserve">- TryParseLane(text: string,</text>
-<text x="49" y="1539" font-size="12" fill="#111" xml:space="preserve">      out lane: DestinationLane): bool</text>
+<text x="1111.0" y="716" font-size="12" fill="#111" xml:space="preserve">- simulatedPickSeconds: float</text>
+<text x="1111.0" y="733" font-size="12" fill="#111" xml:space="preserve">+ UsesRobot: bool</text>
+<text x="1111.0" y="750" font-size="12" fill="#111" xml:space="preserve">+ IsHaltedByFailure: bool</text>
+<text x="1111.0" y="767" font-size="12" fill="#111" xml:space="preserve">+ PalletCompleteSignaled: bool</text>
+<text x="1111.0" y="784" font-size="12" fill="#111" xml:space="preserve">+ ProcessedCount: int</text>
+<line x1="1102.0" y1="795" x2="1460.0" y2="795" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="815" font-size="12" fill="#111" xml:space="preserve">+ Begin(settings: SimulationSettings): void</text>
+<text x="1111.0" y="832" font-size="12" fill="#111" xml:space="preserve">+ Pause(): void</text>
+<text x="1111.0" y="849" font-size="12" fill="#111" xml:space="preserve">+ Resume(): void</text>
+<text x="1111.0" y="866" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<text x="1111.0" y="883" font-size="12" fill="#111" xml:space="preserve">- RunLaneLoop(): IEnumerator</text>
+<text x="1111.0" y="900" font-size="12" fill="#111" xml:space="preserve">- OnPalletCompleted(): void</text>
+<rect x="40" y="1007" width="310.0" height="232" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="195.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LaneOccupancyMonitor</text>
+<line x1="40" y1="1041" x2="350.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="49" y="1061" font-size="12" fill="#111" xml:space="preserve">- lane: DestinationLane</text>
+<text x="49" y="1078" font-size="12" fill="#111" xml:space="preserve">- barcodeScanner: BarcodeScanner</text>
+<text x="49" y="1095" font-size="12" fill="#111" xml:space="preserve">- diverter: LaneDiverter</text>
+<text x="49" y="1112" font-size="12" fill="#111" xml:space="preserve">+ CirculatingCount: int</text>
+<text x="49" y="1129" font-size="12" fill="#111" xml:space="preserve">+ IsCongested: bool</text>
+<text x="49" y="1146" font-size="12" fill="#111" xml:space="preserve">+ CongestionChanged: event Action&lt;bool&gt;</text>
+<line x1="40" y1="1157" x2="350.0" y2="1157" stroke="#111" stroke-width="1.1"/>
+<text x="49" y="1177" font-size="12" fill="#111" xml:space="preserve">- OnBoxRead(box: LogisticsBox): void</text>
+<text x="49" y="1194" font-size="12" fill="#111" xml:space="preserve">- OnBoxDiverted(body: Rigidbody): void</text>
+<text x="49" y="1211" font-size="12" fill="#111" xml:space="preserve">- UpdateCongestion(): void</text>
+<text x="49" y="1228" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="406.0" y="1007" width="292.0" height="147" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="552.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">MiddleStopper</text>
+<line x1="406.0" y1="1041" x2="698.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="415.0" y="1061" font-size="12" fill="#111" xml:space="preserve">- stopperBody: Rigidbody</text>
+<text x="415.0" y="1078" font-size="12" fill="#111" xml:space="preserve">- holdSensor: Collider</text>
+<text x="415.0" y="1095" font-size="12" fill="#111" xml:space="preserve">+ HasWaitingBox: bool</text>
+<line x1="406.0" y1="1106" x2="698.0" y2="1106" stroke="#111" stroke-width="1.1"/>
+<text x="415.0" y="1126" font-size="12" fill="#111" xml:space="preserve">+ ReleaseOne(): IEnumerator</text>
+<text x="415.0" y="1143" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="754.0" y="1007" width="292.0" height="198" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="900.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PickupZoneAligner</text>
+<line x1="754.0" y1="1041" x2="1046.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="1061" font-size="12" fill="#111" xml:space="preserve">- pickupPoint: Transform</text>
+<text x="763.0" y="1078" font-size="12" fill="#111" xml:space="preserve">- arrivalSensor: Collider</text>
+<text x="763.0" y="1095" font-size="12" fill="#111" xml:space="preserve">+ CurrentBox: LogisticsBox</text>
+<text x="763.0" y="1112" font-size="12" fill="#111" xml:space="preserve">+ IsEmpty: bool</text>
+<line x1="754.0" y1="1123" x2="1046.0" y2="1123" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="1143" font-size="12" fill="#111" xml:space="preserve">- OnTriggerEnter(other: Collider): void</text>
+<text x="763.0" y="1160" font-size="12" fill="#111" xml:space="preserve">- AlignToPickupPoint(box: LogisticsBox): void</text>
+<text x="763.0" y="1177" font-size="12" fill="#111" xml:space="preserve">+ ClearZone(): void</text>
+<text x="763.0" y="1194" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="1102.0" y="1007" width="358.0" height="283" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1281.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletizingSequence</text>
+<line x1="1102.0" y1="1041" x2="1460.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="1061" font-size="12" fill="#111" xml:space="preserve">- arm: RobotArmInverseKinematics</text>
+<text x="1111.0" y="1078" font-size="12" fill="#111" xml:space="preserve">- gripper: VacuumGripper</text>
+<text x="1111.0" y="1095" font-size="12" fill="#111" xml:space="preserve">- approachHeight: float = 0.10</text>
+<text x="1111.0" y="1112" font-size="12" fill="#111" xml:space="preserve">- transitClearance: float = 0.08</text>
+<text x="1111.0" y="1129" font-size="12" fill="#111" xml:space="preserve">- releaseGap: float = 0.005</text>
+<text x="1111.0" y="1146" font-size="12" fill="#111" xml:space="preserve">- placeTolerance: float = 0.02</text>
+<text x="1111.0" y="1163" font-size="12" fill="#111" xml:space="preserve">+ State: PalletizingState</text>
+<text x="1111.0" y="1180" font-size="12" fill="#111" xml:space="preserve">+ LastResult: PalletizingResult</text>
+<text x="1111.0" y="1197" font-size="12" fill="#111" xml:space="preserve">+ LastPlaceError: float</text>
+<text x="1111.0" y="1214" font-size="12" fill="#111" xml:space="preserve">+ IsBusy: bool</text>
+<line x1="1102.0" y1="1225" x2="1460.0" y2="1225" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="1245" font-size="12" fill="#111" xml:space="preserve">+ PickAndPlace(pickup: PickupZoneAligner,</text>
+<text x="1111.0" y="1262" font-size="12" fill="#111" xml:space="preserve">      pallet: PalletLoadState): IEnumerator</text>
+<text x="1111.0" y="1279" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="1516.0" y="1007" width="322.0" height="300" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1677.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletLoadState</text>
+<line x1="1516.0" y1="1041" x2="1838.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="1061" font-size="12" fill="#111" xml:space="preserve">- layerSlots: Transform[]</text>
+<text x="1525.0" y="1078" font-size="12" fill="#111" xml:space="preserve">- layerHeight: float = 0.17</text>
+<text x="1525.0" y="1095" font-size="12" fill="#111" xml:space="preserve">- layerCount: int</text>
+<text x="1525.0" y="1112" font-size="12" fill="#111" xml:space="preserve">+ PlacedCount: int</text>
+<text x="1525.0" y="1129" font-size="12" fill="#111" xml:space="preserve">+ CurrentLayer: int</text>
+<text x="1525.0" y="1146" font-size="12" fill="#111" xml:space="preserve">+ Capacity: int</text>
+<text x="1525.0" y="1163" font-size="12" fill="#111" xml:space="preserve">+ IsComplete: bool</text>
+<text x="1525.0" y="1180" font-size="12" fill="#111" xml:space="preserve">+ StackTopHeight: float</text>
+<text x="1525.0" y="1197" font-size="12" fill="#111" xml:space="preserve">+ BoxPlaced: event Action</text>
+<text x="1525.0" y="1214" font-size="12" fill="#111" xml:space="preserve">+ Completed: event Action</text>
+<line x1="1516.0" y1="1225" x2="1838.0" y2="1225" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="1245" font-size="12" fill="#111" xml:space="preserve">+ Configure(layerCount: int): void</text>
+<text x="1525.0" y="1262" font-size="12" fill="#111" xml:space="preserve">+ GetNextSlotPose(out pose: Pose): bool</text>
+<text x="1525.0" y="1279" font-size="12" fill="#111" xml:space="preserve">+ ConfirmPlaced(): void</text>
+<text x="1525.0" y="1296" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="1894.0" y="1007" width="262.0" height="266" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2025.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">AutonomousForkliftController</text>
+<line x1="1894.0" y1="1041" x2="2156.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="1061" font-size="12" fill="#111" xml:space="preserve">- homePoint: Transform</text>
+<text x="1903.0" y="1078" font-size="12" fill="#111" xml:space="preserve">- navigationAgent: NavMeshAgent</text>
+<text x="1903.0" y="1095" font-size="12" fill="#111" xml:space="preserve">- obstacleSensor: Collider</text>
+<text x="1903.0" y="1112" font-size="12" fill="#111" xml:space="preserve">- maximumLoadRetries: int</text>
+<text x="1903.0" y="1129" font-size="12" fill="#111" xml:space="preserve">- resumeDelaySeconds: float = 5</text>
+<text x="1903.0" y="1146" font-size="12" fill="#111" xml:space="preserve">+ State: ForkliftState</text>
+<text x="1903.0" y="1163" font-size="12" fill="#111" xml:space="preserve">+ PalletRemoved: event Action</text>
+<line x1="1894.0" y1="1174" x2="2156.0" y2="1174" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="1194" font-size="12" fill="#111" xml:space="preserve">+ RequestPickup(pallet: PalletLoadState,</text>
+<text x="1903.0" y="1211" font-size="12" fill="#111" xml:space="preserve">      dock: DockVehicleManager): void</text>
+<text x="1903.0" y="1228" font-size="12" fill="#111" xml:space="preserve">- TransportRoutine(): IEnumerator</text>
+<text x="1903.0" y="1245" font-size="12" fill="#111" xml:space="preserve">- WaitForObstacleClear(): IEnumerator</text>
+<text x="1903.0" y="1262" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="2212.0" y="1007" width="250.0" height="232" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2337.0" y="1030" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">DockVehicleManager</text>
+<line x1="2212.0" y1="1041" x2="2462.0" y2="1041" stroke="#111" stroke-width="1.1"/>
+<text x="2221.0" y="1061" font-size="12" fill="#111" xml:space="preserve">- truck: Transform</text>
+<text x="2221.0" y="1078" font-size="12" fill="#111" xml:space="preserve">- dockPoint: Transform</text>
+<text x="2221.0" y="1095" font-size="12" fill="#111" xml:space="preserve">- cargoSlots: Transform[]</text>
+<text x="2221.0" y="1112" font-size="12" fill="#111" xml:space="preserve">+ LoadedPalletCount: int</text>
+<text x="2221.0" y="1129" font-size="12" fill="#111" xml:space="preserve">+ IsFull: bool</text>
+<line x1="2212.0" y1="1140" x2="2462.0" y2="1140" stroke="#111" stroke-width="1.1"/>
+<text x="2221.0" y="1160" font-size="12" fill="#111" xml:space="preserve">+ Configure(capacity: int): void</text>
+<text x="2221.0" y="1177" font-size="12" fill="#111" xml:space="preserve">+ GetNextCargoSlot(): Transform</text>
+<text x="2221.0" y="1194" font-size="12" fill="#111" xml:space="preserve">+ RegisterLoaded(): void</text>
+<text x="2221.0" y="1211" font-size="12" fill="#111" xml:space="preserve">- DepartAndReplaceTruck(): IEnumerator</text>
+<text x="2221.0" y="1228" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="40" y="1403" width="310.0" height="249" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="195.0" y="1426" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BarcodeScanner</text>
+<line x1="40" y1="1437" x2="350.0" y2="1437" stroke="#111" stroke-width="1.1"/>
+<text x="49" y="1457" font-size="12" fill="#111" xml:space="preserve">- readCamera: Camera</text>
+<text x="49" y="1474" font-size="12" fill="#111" xml:space="preserve">- readTrigger: Collider</text>
+<text x="49" y="1491" font-size="12" fill="#111" xml:space="preserve">- captureTexture: RenderTexture</text>
+<text x="49" y="1508" font-size="12" fill="#111" xml:space="preserve">- decoder: ZXing.BarcodeReader</text>
+<text x="49" y="1525" font-size="12" fill="#111" xml:space="preserve">+ BoxRead: event Action&lt;LogisticsBox&gt;</text>
+<line x1="40" y1="1536" x2="350.0" y2="1536" stroke="#111" stroke-width="1.1"/>
+<text x="49" y="1556" font-size="12" fill="#111" xml:space="preserve">- OnTriggerEnter(other: Collider): void</text>
+<text x="49" y="1573" font-size="12" fill="#111" xml:space="preserve">- CapturePixels(): Color32[]</text>
+<text x="49" y="1590" font-size="12" fill="#111" xml:space="preserve">- TryDecode(pixels: Color32[],</text>
+<text x="49" y="1607" font-size="12" fill="#111" xml:space="preserve">      out text: string): bool</text>
+<text x="49" y="1624" font-size="12" fill="#111" xml:space="preserve">- TryParseLane(text: string,</text>
+<text x="49" y="1641" font-size="12" fill="#111" xml:space="preserve">      out lane: DestinationLane): bool</text>
 <rect x="40" y="130" width="310.0" height="164" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
 <text x="195.0" y="153" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BarcodeLabelPrinter</text>
 <line x1="40" y1="164" x2="350.0" y2="164" stroke="#111" stroke-width="1.1"/>
@@ -271,118 +284,179 @@
 <text x="49" y="249" font-size="12" fill="#111" xml:space="preserve">+ GetLabel(lane: DestinationLane): Texture2D</text>
 <text x="49" y="266" font-size="12" fill="#111" xml:space="preserve">- CreateLabel(lane: DestinationLane): Texture2D</text>
 <text x="49" y="283" font-size="12" fill="#111" xml:space="preserve">- ToBarcodeText(lane: DestinationLane): string</text>
-<rect x="406.0" y="1301" width="292.0" height="212" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="552.0" y="1318" font-size="11" text-anchor="middle" fill="#444">«기존»</text>
-<text x="552.0" y="1338" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LaneDiverter</text>
-<line x1="406.0" y1="1349" x2="698.0" y2="1349" stroke="#111" stroke-width="1.1"/>
-<text x="415.0" y="1369" font-size="12" fill="#111" xml:space="preserve">- lane: DestinationLane</text>
-<text x="415.0" y="1386" font-size="12" fill="#111" xml:space="preserve">- arm: Rigidbody</text>
-<text x="415.0" y="1403" font-size="12" fill="#111" xml:space="preserve">- section: Rigidbody</text>
-<text x="415.0" y="1420" font-size="12" fill="#111" xml:space="preserve">+ AcceptsBoxes: bool</text>
-<text x="415.0" y="1437" font-size="12" fill="#111" xml:space="preserve">+ IsDiverting: bool</text>
-<text x="415.0" y="1454" font-size="12" fill="#111" xml:space="preserve">+ Diverted: event Action&lt;Rigidbody&gt;</text>
-<line x1="406.0" y1="1465" x2="698.0" y2="1465" stroke="#111" stroke-width="1.1"/>
-<text x="415.0" y="1485" font-size="12" fill="#111" xml:space="preserve">+ Play(): void</text>
-<text x="415.0" y="1502" font-size="12" fill="#111" xml:space="preserve">+ Stop(): void</text>
-<rect x="754.0" y="1301" width="292.0" height="127" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="900.0" y="1318" font-size="11" text-anchor="middle" fill="#444">«기존»</text>
-<text x="900.0" y="1338" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BrakeRollerZone</text>
-<line x1="754.0" y1="1349" x2="1046.0" y2="1349" stroke="#111" stroke-width="1.1"/>
-<text x="763.0" y="1369" font-size="12" fill="#111" xml:space="preserve">- maxSpeed: float</text>
-<text x="763.0" y="1386" font-size="12" fill="#111" xml:space="preserve">+ MaxSpeed: float</text>
-<line x1="754.0" y1="1397" x2="1046.0" y2="1397" stroke="#111" stroke-width="1.1"/>
-<text x="763.0" y="1417" font-size="12" fill="#111" xml:space="preserve">- FixedUpdate(): void</text>
-<rect x="1102.0" y="1301" width="334.0" height="368" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1269.0" y="1324" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">RobotArmInverseKinematics</text>
-<line x1="1102.0" y1="1335" x2="1436.0" y2="1335" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="1355" font-size="12" fill="#111" xml:space="preserve">- joints: ArticulationBody[]</text>
-<text x="1111.0" y="1372" font-size="12" fill="#111" xml:space="preserve">- jointLowerLimits: float[]</text>
-<text x="1111.0" y="1389" font-size="12" fill="#111" xml:space="preserve">- jointUpperLimits: float[]</text>
-<text x="1111.0" y="1406" font-size="12" fill="#111" xml:space="preserve">- shoulderHeight: float = 0.152</text>
-<text x="1111.0" y="1423" font-size="12" fill="#111" xml:space="preserve">- upperArmLength: float = 0.425</text>
-<text x="1111.0" y="1440" font-size="12" fill="#111" xml:space="preserve">- forearmLength: float = 0.39501</text>
-<text x="1111.0" y="1457" font-size="12" fill="#111" xml:space="preserve">- wrist1Offset: float = 0.1021</text>
-<text x="1111.0" y="1474" font-size="12" fill="#111" xml:space="preserve">- wrist2Offset: float = 0.102</text>
-<text x="1111.0" y="1491" font-size="12" fill="#111" xml:space="preserve">- flangeOffset: float = 0.100</text>
-<text x="1111.0" y="1508" font-size="12" fill="#111" xml:space="preserve">- toolLength: float = 0.1828</text>
-<text x="1111.0" y="1525" font-size="12" fill="#111" xml:space="preserve">- baseHeight: float = 0.95</text>
-<text x="1111.0" y="1542" font-size="12" fill="#111" xml:space="preserve">+ IsMoving: bool</text>
-<line x1="1102.0" y1="1553" x2="1436.0" y2="1553" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="1573" font-size="12" fill="#111" xml:space="preserve">+ ForwardKinematics(angles: float[]): Vector3</text>
-<text x="1111.0" y="1590" font-size="12" fill="#111" xml:space="preserve">+ SolveDownwardTool(position: Vector3,</text>
-<text x="1111.0" y="1607" font-size="12" fill="#111" xml:space="preserve">      yaw: float, out angles: float[]): bool</text>
-<text x="1111.0" y="1624" font-size="12" fill="#111" xml:space="preserve">+ MoveTo(position: Vector3, yaw: float): IEnumerator</text>
-<text x="1111.0" y="1641" font-size="12" fill="#111" xml:space="preserve">+ MoveHome(): IEnumerator</text>
-<text x="1111.0" y="1658" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="1492.0" y="1301" width="310.0" height="147" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1647.0" y="1324" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">VacuumGripper</text>
-<line x1="1492.0" y1="1335" x2="1802.0" y2="1335" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="1355" font-size="12" fill="#111" xml:space="preserve">- suctionPoint: Transform</text>
-<text x="1501.0" y="1372" font-size="12" fill="#111" xml:space="preserve">+ HeldBox: LogisticsBox</text>
-<line x1="1492.0" y1="1383" x2="1802.0" y2="1383" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="1403" font-size="12" fill="#111" xml:space="preserve">+ Attach(box: LogisticsBox): void</text>
-<text x="1501.0" y="1420" font-size="12" fill="#111" xml:space="preserve">+ Release(): void</text>
-<text x="1501.0" y="1437" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
-<rect x="406.0" y="1765" width="292.0" height="164" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="552.0" y="1788" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LogisticsBox</text>
-<line x1="406.0" y1="1799" x2="698.0" y2="1799" stroke="#111" stroke-width="1.1"/>
-<text x="415.0" y="1819" font-size="12" fill="#111" xml:space="preserve">- boxType: BoxType</text>
-<text x="415.0" y="1836" font-size="12" fill="#111" xml:space="preserve">- labelRenderer: Renderer</text>
-<text x="415.0" y="1853" font-size="12" fill="#111" xml:space="preserve">+ ReadLane: DestinationLane</text>
-<text x="415.0" y="1870" font-size="12" fill="#111" xml:space="preserve">+ HasReadResult: bool</text>
-<line x1="406.0" y1="1881" x2="698.0" y2="1881" stroke="#111" stroke-width="1.1"/>
-<text x="415.0" y="1901" font-size="12" fill="#111" xml:space="preserve">+ ApplyLabel(label: Texture2D): void</text>
-<text x="415.0" y="1918" font-size="12" fill="#111" xml:space="preserve">+ SetReadResult(lane: DestinationLane): void</text>
-<rect x="754.0" y="1765" width="292.0" height="79" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="900.0" y="1782" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="900.0" y="1802" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BoxType</text>
-<line x1="754.0" y1="1813" x2="1046.0" y2="1813" stroke="#111" stroke-width="1.1"/>
-<text x="763.0" y="1833" font-size="12" fill="#111" xml:space="preserve">Standard</text>
-<rect x="1102.0" y="1765" width="334.0" height="113" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1269.0" y="1782" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="1269.0" y="1802" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">DestinationLane</text>
-<line x1="1102.0" y1="1813" x2="1436.0" y2="1813" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="1833" font-size="12" fill="#111" xml:space="preserve">Lane1</text>
-<text x="1111.0" y="1850" font-size="12" fill="#111" xml:space="preserve">Lane2</text>
-<text x="1111.0" y="1867" font-size="12" fill="#111" xml:space="preserve">Lane3</text>
-<rect x="754.0" y="1868" width="292.0" height="96" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="900.0" y="1885" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="900.0" y="1905" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">SettingsPreset</text>
-<line x1="754.0" y1="1916" x2="1046.0" y2="1916" stroke="#111" stroke-width="1.1"/>
-<text x="763.0" y="1936" font-size="12" fill="#111" xml:space="preserve">Default</text>
-<text x="763.0" y="1953" font-size="12" fill="#111" xml:space="preserve">Demonstration</text>
-<rect x="1102.0" y="1902" width="334.0" height="113" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1269.0" y="1919" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="1269.0" y="1939" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">SimulationRunState</text>
-<line x1="1102.0" y1="1950" x2="1436.0" y2="1950" stroke="#111" stroke-width="1.1"/>
-<text x="1111.0" y="1970" font-size="12" fill="#111" xml:space="preserve">Stopped</text>
-<text x="1111.0" y="1987" font-size="12" fill="#111" xml:space="preserve">Running</text>
-<text x="1111.0" y="2004" font-size="12" fill="#111" xml:space="preserve">Paused</text>
-<rect x="1492.0" y="1765" width="310.0" height="130" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1647.0" y="1782" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="1647.0" y="1802" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">CameraView</text>
-<line x1="1492.0" y1="1813" x2="1802.0" y2="1813" stroke="#111" stroke-width="1.1"/>
-<text x="1501.0" y="1833" font-size="12" fill="#111" xml:space="preserve">Overview</text>
-<text x="1501.0" y="1850" font-size="12" fill="#111" xml:space="preserve">Sorting</text>
-<text x="1501.0" y="1867" font-size="12" fill="#111" xml:space="preserve">Palletizing</text>
-<text x="1501.0" y="1884" font-size="12" fill="#111" xml:space="preserve">Dock</text>
-<rect x="1858.0" y="1765" width="262.0" height="130" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="1989.0" y="1782" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="1989.0" y="1802" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletizingState</text>
-<line x1="1858.0" y1="1813" x2="2120.0" y2="1813" stroke="#111" stroke-width="1.1"/>
-<text x="1867.0" y="1833" font-size="12" fill="#111" xml:space="preserve">Idle</text>
-<text x="1867.0" y="1850" font-size="12" fill="#111" xml:space="preserve">Picking</text>
-<text x="1867.0" y="1867" font-size="12" fill="#111" xml:space="preserve">Placing</text>
-<text x="1867.0" y="1884" font-size="12" fill="#111" xml:space="preserve">Returning</text>
-<rect x="2176.0" y="1765" width="250.0" height="181" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
-<text x="2301.0" y="1782" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
-<text x="2301.0" y="1802" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">ForkliftState</text>
-<line x1="2176.0" y1="1813" x2="2426.0" y2="1813" stroke="#111" stroke-width="1.1"/>
-<text x="2185.0" y="1833" font-size="12" fill="#111" xml:space="preserve">Idle</text>
-<text x="2185.0" y="1850" font-size="12" fill="#111" xml:space="preserve">MovingToPallet</text>
-<text x="2185.0" y="1867" font-size="12" fill="#111" xml:space="preserve">Lifting</text>
-<text x="2185.0" y="1884" font-size="12" fill="#111" xml:space="preserve">MovingToDock</text>
-<text x="2185.0" y="1901" font-size="12" fill="#111" xml:space="preserve">Loading</text>
-<text x="2185.0" y="1918" font-size="12" fill="#111" xml:space="preserve">Returning</text>
-<text x="2185.0" y="1935" font-size="12" fill="#111" xml:space="preserve">StoppedByObstacle</text>
+<rect x="406.0" y="1403" width="292.0" height="212" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="552.0" y="1420" font-size="11" text-anchor="middle" fill="#444">«기존»</text>
+<text x="552.0" y="1440" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LaneDiverter</text>
+<line x1="406.0" y1="1451" x2="698.0" y2="1451" stroke="#111" stroke-width="1.1"/>
+<text x="415.0" y="1471" font-size="12" fill="#111" xml:space="preserve">- lane: DestinationLane</text>
+<text x="415.0" y="1488" font-size="12" fill="#111" xml:space="preserve">- arm: Rigidbody</text>
+<text x="415.0" y="1505" font-size="12" fill="#111" xml:space="preserve">- section: Rigidbody</text>
+<text x="415.0" y="1522" font-size="12" fill="#111" xml:space="preserve">+ AcceptsBoxes: bool</text>
+<text x="415.0" y="1539" font-size="12" fill="#111" xml:space="preserve">+ IsDiverting: bool</text>
+<text x="415.0" y="1556" font-size="12" fill="#111" xml:space="preserve">+ Diverted: event Action&lt;Rigidbody&gt;</text>
+<line x1="406.0" y1="1567" x2="698.0" y2="1567" stroke="#111" stroke-width="1.1"/>
+<text x="415.0" y="1587" font-size="12" fill="#111" xml:space="preserve">+ Play(): void</text>
+<text x="415.0" y="1604" font-size="12" fill="#111" xml:space="preserve">+ Stop(): void</text>
+<rect x="1894.0" y="1403" width="262.0" height="127" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2025.0" y="1420" font-size="11" text-anchor="middle" fill="#444">«기존»</text>
+<text x="2025.0" y="1440" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BrakeRollerZone</text>
+<line x1="1894.0" y1="1451" x2="2156.0" y2="1451" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="1471" font-size="12" fill="#111" xml:space="preserve">- maxSpeed: float</text>
+<text x="1903.0" y="1488" font-size="12" fill="#111" xml:space="preserve">+ MaxSpeed: float</text>
+<line x1="1894.0" y1="1499" x2="2156.0" y2="1499" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="1519" font-size="12" fill="#111" xml:space="preserve">- FixedUpdate(): void</text>
+<rect x="1102.0" y="1403" width="358.0" height="453" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1281.0" y="1426" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">RobotArmInverseKinematics</text>
+<line x1="1102.0" y1="1437" x2="1460.0" y2="1437" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="1457" font-size="12" fill="#111" xml:space="preserve">- joints: ArticulationBody[]</text>
+<text x="1111.0" y="1474" font-size="12" fill="#111" xml:space="preserve">- homeJointAngles: float[]</text>
+<text x="1111.0" y="1491" font-size="12" fill="#111" xml:space="preserve">- toolLength: float = 0.15</text>
+<text x="1111.0" y="1508" font-size="12" fill="#111" xml:space="preserve">- jointSpeedDegrees: float = 45</text>
+<text x="1111.0" y="1525" font-size="12" fill="#111" xml:space="preserve">- reachToleranceDegrees: float = 1</text>
+<text x="1111.0" y="1542" font-size="12" fill="#111" xml:space="preserve">- minimumMoveSeconds: float = 0.3</text>
+<text x="1111.0" y="1559" font-size="12" fill="#111" xml:space="preserve">- linearStepMeters: float = 0.02</text>
+<text x="1111.0" y="1576" font-size="12" fill="#111" xml:space="preserve">- referenceOffsets: double[]</text>
+<text x="1111.0" y="1593" font-size="12" fill="#111" xml:space="preserve">+ IsMoving: bool</text>
+<text x="1111.0" y="1610" font-size="12" fill="#111" xml:space="preserve">+ LastMoveSucceeded: bool</text>
+<text x="1111.0" y="1627" font-size="12" fill="#111" xml:space="preserve">+ LastReachError: float</text>
+<text x="1111.0" y="1644" font-size="12" fill="#111" xml:space="preserve">+ CurrentToolPosition: Vector3</text>
+<line x1="1102.0" y1="1655" x2="1460.0" y2="1655" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="1675" font-size="12" fill="#111" xml:space="preserve">+ WorldToBase(world: Vector3): Vector3</text>
+<text x="1111.0" y="1692" font-size="12" fill="#111" xml:space="preserve">+ BaseToWorld(base: Vector3): Vector3</text>
+<text x="1111.0" y="1709" font-size="12" fill="#111" xml:space="preserve">+ GetJointAngles(): float[]</text>
+<text x="1111.0" y="1726" font-size="12" fill="#111" xml:space="preserve">+ ForwardKinematics(angles: float[]): Vector3</text>
+<text x="1111.0" y="1743" font-size="12" fill="#111" xml:space="preserve">+ SolveDownwardTool(position: Vector3,</text>
+<text x="1111.0" y="1760" font-size="12" fill="#111" xml:space="preserve">      yaw: float, out angles: float[]): bool</text>
+<text x="1111.0" y="1777" font-size="12" fill="#111" xml:space="preserve">+ MoveTo(position: Vector3, yaw: float): IEnumerator</text>
+<text x="1111.0" y="1794" font-size="12" fill="#111" xml:space="preserve">+ MoveLinear(position: Vector3, yaw: float): IEnumerator</text>
+<text x="1111.0" y="1811" font-size="12" fill="#111" xml:space="preserve">+ MoveToJointAngles(angles: float[]): IEnumerator</text>
+<text x="1111.0" y="1828" font-size="12" fill="#111" xml:space="preserve">+ MoveHome(): IEnumerator</text>
+<text x="1111.0" y="1845" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="1516.0" y="1403" width="322.0" height="317" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1677.0" y="1426" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">VacuumGripper</text>
+<line x1="1516.0" y1="1437" x2="1838.0" y2="1437" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="1457" font-size="12" fill="#111" xml:space="preserve">- suctionPoint: Transform</text>
+<text x="1525.0" y="1474" font-size="12" fill="#111" xml:space="preserve">- toolLink: ArticulationBody</text>
+<text x="1525.0" y="1491" font-size="12" fill="#111" xml:space="preserve">- contactDistance: float = 0.01</text>
+<text x="1525.0" y="1508" font-size="12" fill="#111" xml:space="preserve">- centerTolerance: float = 0.03</text>
+<text x="1525.0" y="1525" font-size="12" fill="#111" xml:space="preserve">- tiltToleranceDegrees: float = 10</text>
+<text x="1525.0" y="1542" font-size="12" fill="#111" xml:space="preserve">- holdForce: float = 100</text>
+<text x="1525.0" y="1559" font-size="12" fill="#111" xml:space="preserve">+ HeldBox: LogisticsBox</text>
+<text x="1525.0" y="1576" font-size="12" fill="#111" xml:space="preserve">+ IsHolding: bool</text>
+<text x="1525.0" y="1593" font-size="12" fill="#111" xml:space="preserve">+ LastAttachResult: VacuumAttachResult</text>
+<text x="1525.0" y="1610" font-size="12" fill="#111" xml:space="preserve">+ PeakRequiredForce: float</text>
+<text x="1525.0" y="1627" font-size="12" fill="#111" xml:space="preserve">+ Attached / Released / Dropped: event</text>
+<line x1="1516.0" y1="1638" x2="1838.0" y2="1638" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="1658" font-size="12" fill="#111" xml:space="preserve">+ FindBoxUnderSuction(): LogisticsBox</text>
+<text x="1525.0" y="1675" font-size="12" fill="#111" xml:space="preserve">+ TryAttach(box: LogisticsBox): VacuumAttachResult</text>
+<text x="1525.0" y="1692" font-size="12" fill="#111" xml:space="preserve">+ Release(): bool</text>
+<text x="1525.0" y="1709" font-size="12" fill="#111" xml:space="preserve">+ ResetToInitialState(): void</text>
+<rect x="406.0" y="1952" width="292.0" height="215" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="552.0" y="1975" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">LogisticsBox</text>
+<line x1="406.0" y1="1986" x2="698.0" y2="1986" stroke="#111" stroke-width="1.1"/>
+<text x="415.0" y="2006" font-size="12" fill="#111" xml:space="preserve">- boxType: BoxType</text>
+<text x="415.0" y="2023" font-size="12" fill="#111" xml:space="preserve">- labelRenderer: Renderer</text>
+<text x="415.0" y="2040" font-size="12" fill="#111" xml:space="preserve">+ ReadLane: DestinationLane</text>
+<text x="415.0" y="2057" font-size="12" fill="#111" xml:space="preserve">+ HasReadResult: bool</text>
+<text x="415.0" y="2074" font-size="12" fill="#111" xml:space="preserve">+ IsHeld: bool</text>
+<line x1="406.0" y1="2085" x2="698.0" y2="2085" stroke="#111" stroke-width="1.1"/>
+<text x="415.0" y="2105" font-size="12" fill="#111" xml:space="preserve">+ ApplyLabel(label: Texture2D): void</text>
+<text x="415.0" y="2122" font-size="12" fill="#111" xml:space="preserve">+ SetReadResult(lane: DestinationLane): void</text>
+<text x="415.0" y="2139" font-size="12" fill="#111" xml:space="preserve">+ SetHeld(held: bool): void</text>
+<text x="415.0" y="2156" font-size="12" fill="#111" xml:space="preserve">+ SetPlacedOnPallet(): void</text>
+<rect x="754.0" y="1952" width="292.0" height="79" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="900.0" y="1969" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="900.0" y="1989" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">BoxType</text>
+<line x1="754.0" y1="2000" x2="1046.0" y2="2000" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="2020" font-size="12" fill="#111" xml:space="preserve">Standard</text>
+<rect x="1102.0" y="1952" width="358.0" height="113" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1281.0" y="1969" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="1281.0" y="1989" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">DestinationLane</text>
+<line x1="1102.0" y1="2000" x2="1460.0" y2="2000" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="2020" font-size="12" fill="#111" xml:space="preserve">Lane1</text>
+<text x="1111.0" y="2037" font-size="12" fill="#111" xml:space="preserve">Lane2</text>
+<text x="1111.0" y="2054" font-size="12" fill="#111" xml:space="preserve">Lane3</text>
+<rect x="754.0" y="2055" width="292.0" height="96" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="900.0" y="2072" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="900.0" y="2092" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">SettingsPreset</text>
+<line x1="754.0" y1="2103" x2="1046.0" y2="2103" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="2123" font-size="12" fill="#111" xml:space="preserve">Default</text>
+<text x="763.0" y="2140" font-size="12" fill="#111" xml:space="preserve">Demonstration</text>
+<rect x="1102.0" y="2089" width="358.0" height="113" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1281.0" y="2106" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="1281.0" y="2126" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">SimulationRunState</text>
+<line x1="1102.0" y1="2137" x2="1460.0" y2="2137" stroke="#111" stroke-width="1.1"/>
+<text x="1111.0" y="2157" font-size="12" fill="#111" xml:space="preserve">Stopped</text>
+<text x="1111.0" y="2174" font-size="12" fill="#111" xml:space="preserve">Running</text>
+<text x="1111.0" y="2191" font-size="12" fill="#111" xml:space="preserve">Paused</text>
+<rect x="1516.0" y="1952" width="322.0" height="130" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="1677.0" y="1969" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="1677.0" y="1989" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">CameraView</text>
+<line x1="1516.0" y1="2000" x2="1838.0" y2="2000" stroke="#111" stroke-width="1.1"/>
+<text x="1525.0" y="2020" font-size="12" fill="#111" xml:space="preserve">Overview</text>
+<text x="1525.0" y="2037" font-size="12" fill="#111" xml:space="preserve">Sorting</text>
+<text x="1525.0" y="2054" font-size="12" fill="#111" xml:space="preserve">Palletizing</text>
+<text x="1525.0" y="2071" font-size="12" fill="#111" xml:space="preserve">Dock</text>
+<rect x="1894.0" y="1952" width="262.0" height="130" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2025.0" y="1969" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="2025.0" y="1989" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletizingState</text>
+<line x1="1894.0" y1="2000" x2="2156.0" y2="2000" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="2020" font-size="12" fill="#111" xml:space="preserve">Idle</text>
+<text x="1903.0" y="2037" font-size="12" fill="#111" xml:space="preserve">Picking</text>
+<text x="1903.0" y="2054" font-size="12" fill="#111" xml:space="preserve">Placing</text>
+<text x="1903.0" y="2071" font-size="12" fill="#111" xml:space="preserve">Returning</text>
+<rect x="2212.0" y="1952" width="250.0" height="181" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2337.0" y="1969" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="2337.0" y="1989" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">ForkliftState</text>
+<line x1="2212.0" y1="2000" x2="2462.0" y2="2000" stroke="#111" stroke-width="1.1"/>
+<text x="2221.0" y="2020" font-size="12" fill="#111" xml:space="preserve">Idle</text>
+<text x="2221.0" y="2037" font-size="12" fill="#111" xml:space="preserve">MovingToPallet</text>
+<text x="2221.0" y="2054" font-size="12" fill="#111" xml:space="preserve">Lifting</text>
+<text x="2221.0" y="2071" font-size="12" fill="#111" xml:space="preserve">MovingToDock</text>
+<text x="2221.0" y="2088" font-size="12" fill="#111" xml:space="preserve">Loading</text>
+<text x="2221.0" y="2105" font-size="12" fill="#111" xml:space="preserve">Returning</text>
+<text x="2221.0" y="2122" font-size="12" fill="#111" xml:space="preserve">StoppedByObstacle</text>
+<rect x="754.0" y="1403" width="292.0" height="331" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="900.0" y="1420" font-size="11" text-anchor="middle" fill="#444">«static»</text>
+<text x="900.0" y="1440" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">RobotArmKinematicsSolver</text>
+<line x1="754.0" y1="1451" x2="1046.0" y2="1451" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="1471" font-size="12" fill="#111" xml:space="preserve">+ ShoulderHeight: double = 0.152</text>
+<text x="763.0" y="1488" font-size="12" fill="#111" xml:space="preserve">+ UpperArmLength: double = 0.425</text>
+<text x="763.0" y="1505" font-size="12" fill="#111" xml:space="preserve">+ ForearmLength: double = 0.39501</text>
+<text x="763.0" y="1522" font-size="12" fill="#111" xml:space="preserve">+ Wrist1Offset: double = 0.1021</text>
+<text x="763.0" y="1539" font-size="12" fill="#111" xml:space="preserve">+ Wrist2Offset: double = 0.102</text>
+<text x="763.0" y="1556" font-size="12" fill="#111" xml:space="preserve">+ FlangeOffset: double = 0.100</text>
+<text x="763.0" y="1573" font-size="12" fill="#111" xml:space="preserve">+ LowerLimits / UpperLimits: double[]</text>
+<line x1="754.0" y1="1584" x2="1046.0" y2="1584" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="1604" font-size="12" fill="#111" xml:space="preserve">+ ForwardKinematics(q: double[], toolLength,</text>
+<text x="763.0" y="1621" font-size="12" fill="#111" xml:space="preserve">      position, rotation): void</text>
+<text x="763.0" y="1638" font-size="12" fill="#111" xml:space="preserve">+ SolveDownwardToolAll(x, y, z, yaw,</text>
+<text x="763.0" y="1655" font-size="12" fill="#111" xml:space="preserve">      toolLength): List&lt;double[]&gt;</text>
+<text x="763.0" y="1672" font-size="12" fill="#111" xml:space="preserve">+ SolveDownwardTool(x, y, z, yaw, toolLength,</text>
+<text x="763.0" y="1689" font-size="12" fill="#111" xml:space="preserve">      current, reference, out best): bool</text>
+<text x="763.0" y="1706" font-size="12" fill="#111" xml:space="preserve">+ SameFamily(q, reference): bool</text>
+<text x="763.0" y="1723" font-size="12" fill="#111" xml:space="preserve">+ WithinLimits(q: double[]): bool</text>
+<rect x="754.0" y="2175" width="292.0" height="164" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="900.0" y="2192" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="900.0" y="2212" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">VacuumAttachResult</text>
+<line x1="754.0" y1="2223" x2="1046.0" y2="2223" stroke="#111" stroke-width="1.1"/>
+<text x="763.0" y="2243" font-size="12" fill="#111" xml:space="preserve">Attached</text>
+<text x="763.0" y="2260" font-size="12" fill="#111" xml:space="preserve">NoBox</text>
+<text x="763.0" y="2277" font-size="12" fill="#111" xml:space="preserve">AlreadyHolding</text>
+<text x="763.0" y="2294" font-size="12" fill="#111" xml:space="preserve">TooFar</text>
+<text x="763.0" y="2311" font-size="12" fill="#111" xml:space="preserve">OffCenter</text>
+<text x="763.0" y="2328" font-size="12" fill="#111" xml:space="preserve">Tilted</text>
+<rect x="1894.0" y="2106" width="262.0" height="215" fill="#ffffff" stroke="#111" stroke-width="1.3"/>
+<text x="2025.0" y="2123" font-size="11" text-anchor="middle" fill="#444">«enumeration»</text>
+<text x="2025.0" y="2143" font-size="14" font-weight="bold" text-anchor="middle" fill="#111">PalletizingResult</text>
+<line x1="1894.0" y1="2154" x2="2156.0" y2="2154" stroke="#111" stroke-width="1.1"/>
+<text x="1903.0" y="2174" font-size="12" fill="#111" xml:space="preserve">Success</text>
+<text x="1903.0" y="2191" font-size="12" fill="#111" xml:space="preserve">NoBox</text>
+<text x="1903.0" y="2208" font-size="12" fill="#111" xml:space="preserve">PalletFull</text>
+<text x="1903.0" y="2225" font-size="12" fill="#111" xml:space="preserve">Busy</text>
+<text x="1903.0" y="2242" font-size="12" fill="#111" xml:space="preserve">PickMoveFailed</text>
+<text x="1903.0" y="2259" font-size="12" fill="#111" xml:space="preserve">AttachFailed</text>
+<text x="1903.0" y="2276" font-size="12" fill="#111" xml:space="preserve">CarryMoveFailed</text>
+<text x="1903.0" y="2293" font-size="12" fill="#111" xml:space="preserve">Dropped</text>
+<text x="1903.0" y="2310" font-size="12" fill="#111" xml:space="preserve">PlaceCheckFailed</text>
 </svg>

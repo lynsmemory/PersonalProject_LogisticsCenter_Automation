@@ -29,8 +29,6 @@
 Thumbs.db
 
 # Local tooling and caches
-/.agents/
-/.codex/
 /.aws/
 __pycache__/
 *.py[cod]
@@ -38,3 +36,10 @@ __pycache__/
 *.tmp
 .env
 .env.*
+
+# Local Unity/IDE state and collaboration execution logs
+/*.slnx
+/uam/
+/Docs/Collaboration/*.jsonl
+*.bak
+/mono_crash.*
