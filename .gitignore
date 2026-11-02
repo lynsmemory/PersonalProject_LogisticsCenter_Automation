@@ -29,8 +29,6 @@
 Thumbs.db
 
 # Local tooling and caches
-/.agents/
-/.codex/
 /.aws/
 __pycache__/
 *.py[cod]
@@ -43,6 +41,5 @@ __pycache__/
 /*.slnx
 /uam/
 /Docs/Collaboration/*.jsonl
-/Docs/Collaboration/Claude_Link_Check.json
 *.bak
 /mono_crash.*

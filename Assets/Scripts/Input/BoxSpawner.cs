@@ -35,6 +35,10 @@ namespace Logistics
         [Tooltip("투입점 주변 비움 확인 반경 (m)")]
         [SerializeField, Min(0.05f)] private float clearRadius = 0.3f;
 
+        [Tooltip("직전 생성 박스가 투입점에서 이 거리(m) 이상 멀어진 뒤에만 생성한다. 투입선이 합류 보류로 멈췄다 풀리면 앞 박스가 투입점 0.45 m 앞에 서 있어 " +
+                 "두 박스가 붙어 나가고, 분기 장치 밀판(0.8 m)이 하나만 밀 수 없어 계속 순환한다 (11/2 시험). 밀판 판정에 필요한 틈 약 0.52 m + 박스 길이 + 여유")]
+        [SerializeField, Min(0f)] private float minSpacing = 1.0f;
+
         [Tooltip("생성한 박스를 모아 둘 부모 (비우면 이 오브젝트)")]
         [SerializeField] private Transform boxContainer;
         #endregion
@@ -89,7 +93,7 @@ namespace Logistics
             {
                 //1. 투입점이 비었을 때만 추첨한다. 기다리는 동안에는 재추첨하지 않는다.
                 DestinationLane lane;
-                while (IsFeedBlocked || !IsSpawnPointClear() || !TryNextLane(out lane))
+                while (IsFeedBlocked || !IsSpawnPointClear() || !IsSpacingClear() || !TryNextLane(out lane))
                 {
                     yield return new WaitForSeconds(0.25f);
                 }
@@ -149,6 +153,21 @@ namespace Logistics
             return true;
         }
 
+        // 직전 생성 박스가 최소 간격만큼 멀어졌는지 (제거됐거나 들어 올려졌으면 통과)
+        private bool IsSpacingClear()
+        {
+            if (spawned.Count == 0)
+            {
+                return true;
+            }
+            LogisticsBox last = spawned[spawned.Count - 1];
+            if (last == null || last.Body == null || last.Body.isKinematic)
+            {
+                return true;
+            }
+            return (last.transform.position - spawnPoint.position).sqrMagnitude >= minSpacing * minSpacing;
+        }
+
         private LogisticsBox Spawn(DestinationLane lane)
         {
             int typeIndex = (int)spawnBoxType;
@@ -188,11 +207,12 @@ namespace Logistics
             Destroy(box.gameObject);
         }
 
-        // 초기화 버튼: 투입 중지, 씬의 모든 박스 제거, 라벨 후보 임시 목록 비움
+        // 초기화 버튼: 투입 중지, 씬의 모든 박스 제거, 투입 누계 0, 라벨 후보 임시 목록 비움
         public void ResetToInitialState()
         {
             Stop();
             IsFeedBlocked = false;
+            SpawnedCount = 0;
             foreach (LogisticsBox box in spawned)
             {
                 if (box != null)
